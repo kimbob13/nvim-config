@@ -9,20 +9,20 @@ set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
 
-set.mouse = 'a'
+set.mouse = "a"
 set.hidden = true
-set.inccommand = 'split'
+set.inccommand = "split"
 set.incsearch = true
 set.ttimeoutlen = 0
 set.wildmenu = true
-set.completeopt = {'menuone', 'noinsert', 'noselect'}
+set.completeopt = {"menuone", "noinsert", "noselect"}
 
 set.number = true
 set.cursorline = true
-set.signcolumn = 'yes:1'
+set.signcolumn = "yes:1"
 set.title = true
-set.encoding = 'UTF-8'
-set.background = 'dark'
+set.encoding = "UTF-8"
+set.background = "dark"
 set.termguicolors = true
 
 -- set.relativenumber = true
@@ -46,4 +46,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = "\\"
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "matchit",
+                "matchparen",
+                "netrwPlugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
+})
