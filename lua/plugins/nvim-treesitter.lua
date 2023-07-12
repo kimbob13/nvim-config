@@ -4,7 +4,12 @@ return {
         build = function()
             require("nvim-treesitter.install").update({ with_sync = true })
         end,
-        event = "BufReadPost",
+        event = { "BufReadPost", "BufNewFile" },
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-textobjects",
+            }
+        },
         opts = {
             -- A list of parser names, or "all" (the five listed parsers should always be installed)
             ensure_installed = { "c", "python", "lua", "vim", "vimdoc", "query", "diff" },
@@ -31,6 +36,48 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = false,
             },
+
+            ---- treesitter-textobjects configs
+            textobjects = {
+                select = {
+                    enable = true,
+                    -- Automatically jump forward to textobj, similar to targets.vim
+                    lookahead = true,
+                    keymaps = {
+                        -- You can use the capture groups defined in textobjects.scm
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ac"] = "@class.outer",
+                        ["ic"] = "@class.inner",
+                    },
+                },
+                move = {
+                    enable = true,
+                    set_jumps = true,
+                    goto_next_start = {
+                        [']m'] = '@function.outer',
+                        [']]'] = '@class.outer',
+                    },
+                    goto_next_end = {
+                        [']M'] = '@function.outer',
+                        [']['] = '@class.outer',
+                    },
+                    goto_previous_start = {
+                        ['[m'] = '@function.outer',
+                        ['[['] = '@class.outer',
+                    },
+                    goto_previous_end = {
+                        ['[M'] = '@function.outer',
+                        ['[]'] = '@class.outer',
+                    },
+                },
+                swap = {
+                   enable = true,
+                   swap_next = {["<leader>xp"] = "@parameter.inner"},
+                   swap_previous = {["<leader>xP"] = "@parameter.inner"},
+                },
+            },
+
         },
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
