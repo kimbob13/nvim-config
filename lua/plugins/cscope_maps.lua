@@ -14,6 +14,8 @@ return {
             endfun
             call SetupCommandAlias("cs", "Cscope")
         ]])
+
+        vim.keymap.set("n", "<F5>", ":Cscope build<CR>", { noremap = true })
     end,
     opts = {
         cscope = {

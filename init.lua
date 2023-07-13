@@ -30,7 +30,7 @@ set.termguicolors = true
 -- set.splitright = true
 
 -- new vsplit of go to definition command
-vim.keymap.set("n", "<C-[>", "<C-w>]<C-w>t<C-w>H", { noremap = true })
+vim.keymap.set("n", "<C-[>", ":vert winc ]<CR>", { noremap = true })
 
 -----------------------------------------------------------
 ---- lazy.nvim                                            |

@@ -1,11 +1,11 @@
 local whitespace = "\u{2632} "
 
-function trailing_whitespaces()
+local function trailing_whitespaces()
     local space = vim.fn.search([[\s\+$]], "nwc")
     return space ~= 0 and whitespace.."["..space.."]".."trailing" or ""
 end
 
-function mixed_indent()
+local function mixed_indent()
     local space_pat = [[\v^ +]]
     local tab_pat = [[\v^\t+]]
     local space_indent = vim.fn.search(space_pat, "nwc")
@@ -32,7 +32,7 @@ function mixed_indent()
     end
 end
 
-function line_numbers()
+local function line_numbers()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local total_lines = vim.api.nvim_buf_line_count(0)
     local progress = math.floor((row / total_lines) * 100)
