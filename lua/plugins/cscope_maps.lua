@@ -16,17 +16,6 @@ return {
         ]])
 
         vim.keymap.set("n", "<F5>", ":Cscope build<CR>", { noremap = true })
-
-        -- new vsplit of go to definition command
-        vim.keymap.set(
-            "n",
-            "<C-[>",
-            ":vert winc ]<CR>",
-            {
-                noremap = true,
-                desc = "ctags vertical split",
-            }
-        )
     end,
     opts = {
         cscope = {

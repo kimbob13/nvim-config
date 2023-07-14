@@ -14,7 +14,7 @@
   "neoscroll.nvim": { "branch": "master", "commit": "d7601c26c8a183fa8994ed339e70c2d841253e93" },
   "noice.nvim": { "branch": "main", "commit": "6c87c1d11c38180fb72bf8f45518a0a3e081afc1" },
   "nui.nvim": { "branch": "main", "commit": "d146966a423e60699b084eeb28489fe3b6427599" },
-  "nvim-autopairs": { "branch": "master", "commit": "9d121c1dffba63a5fba893cfd0fdd9dec609c5bf" },
+  "nvim-autopairs": { "branch": "master", "commit": "ae5b41ce880a6d850055e262d6dfebd362bb276e" },
   "nvim-lspconfig": { "branch": "master", "commit": "ba74226cac83eacb435827e028f810212147937b" },
   "nvim-notify": { "branch": "master", "commit": "ea9c8ce7a37f2238f934e087c255758659948e0f" },
   "nvim-surround": { "branch": "main", "commit": "211eaad7c6d01ef4ac02cba9052b3082ec232101" },
@@ -30,5 +30,5 @@
   "telescope.nvim": { "branch": "master", "commit": "776b509f80dd49d8205b9b0d94485568236d1192" },
   "twilight.nvim": { "branch": "main", "commit": "a4843e6e67092a1e6fa9666f02bf0ab59174c1df" },
   "vim-illuminate": { "branch": "master", "commit": "a2907275a6899c570d16e95b9db5fd921c167502" },
-  "which-key.nvim": { "branch": "main", "commit": "b3408d60a79ce867343fe37bee9b6bee14a29a65" }
+  "which-key.nvim": { "branch": "main", "commit": "96e99913df649d45333a9ad625ad4c72d5e65fe1" }
 }
