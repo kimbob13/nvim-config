@@ -7,6 +7,7 @@ return {
             "<CMD>Neotree toggle=true<CR>",
             mode = "n",
             noremap = true,
+            desc = "Neo Tree"
         },
     },
     dependencies = {

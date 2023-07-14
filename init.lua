@@ -1,5 +1,5 @@
 -----------------------------------------------------------
----- set options and keymap                               |
+---- set options                                          |
 -----------------------------------------------------------
 local set = vim.opt
 
@@ -28,9 +28,6 @@ set.termguicolors = true
 -- set.relativenumber = true
 -- set.splitbelow = true
 -- set.splitright = true
-
--- new vsplit of go to definition command
-vim.keymap.set("n", "<C-[>", ":vert winc ]<CR>", { noremap = true })
 
 -----------------------------------------------------------
 ---- lazy.nvim                                            |

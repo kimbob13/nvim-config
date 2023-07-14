@@ -6,6 +6,7 @@ return {
             "<CMD>SymbolsOutline<CR>",
             mode = "n",
             noremap = true,
+            desc = "Symbols Outline",
         },
     },
     config = function()
