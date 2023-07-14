@@ -1,12 +1,30 @@
+local neovim_header = {
+	[[                                                    ]],
+	[[ ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ]],
+	[[ ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ]],
+	[[ ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ]],
+	[[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
+	[[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
+	[[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
+	[[                                                    ]],
+}
+
 return {
     "glepnir/dashboard-nvim",
     event = "VimEnter",
     dependencies = { {"nvim-tree/nvim-web-devicons"}},
     opts = {
-    theme = "hyper",
+        theme = "hyper",
+        shortcut_type = "number",
+        hide = {
+            statusline = true,
+            tabline = false,
+            winbar = false,
+        },
         config = {
+            header = neovim_header,
             week_header = {
-                enable = true,
+                enable = false,
             },
             shortcut = {
                 {
@@ -18,15 +36,15 @@ return {
                     key = "f",
                 },
                 {
-                    desc = " dotfiles",
+                    desc = " Dotfiles",
                     group = "Number",
                     action = "Telescope find_files hidden=true",
                     key = "d",
                 },
                 {
-                    desc = "󰊳 Updates",
+                    desc = "󰊳 Check Update",
                     group = "@property",
-                    action = "Lazy update", key = "u"
+                    action = "Lazy check", key = "c"
                 },
                 {
                     desc = " Profile",
