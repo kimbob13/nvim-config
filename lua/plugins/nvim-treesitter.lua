@@ -1,9 +1,7 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        build = function()
-            require("nvim-treesitter.install").update({ with_sync = true })
-        end,
+        build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         dependencies = {
             {
@@ -55,20 +53,20 @@ return {
                     enable = true,
                     set_jumps = true,
                     goto_next_start = {
-                        [']m'] = '@function.outer',
-                        [']]'] = '@class.outer',
+                        ["]m"] = "@function.outer",
+                        ["]]"] = "@class.outer",
                     },
                     goto_next_end = {
-                        [']M'] = '@function.outer',
-                        [']['] = '@class.outer',
+                        ["]M"] = "@function.outer",
+                        ["]["] = "@class.outer",
                     },
                     goto_previous_start = {
-                        ['[m'] = '@function.outer',
-                        ['[['] = '@class.outer',
+                        ["[m"] = "@function.outer",
+                        ["[["] = "@class.outer",
                     },
                     goto_previous_end = {
-                        ['[M'] = '@function.outer',
-                        ['[]'] = '@class.outer',
+                        ["[M"] = "@function.outer",
+                        ["[]"] = "@class.outer",
                     },
                 },
                 swap = {
