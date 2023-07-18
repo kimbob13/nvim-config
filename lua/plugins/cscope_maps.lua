@@ -21,7 +21,7 @@ return {
         cscope = {
             picker = "telescope",
             skip_picker_for_single_result = true,
-            db_build_cmd_args = { "-bcqvR" },
+            db_build_cmd_args = { "-bcqR" },
         },
     },
     config = function(_, opts)
