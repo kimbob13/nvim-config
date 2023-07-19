@@ -9,7 +9,7 @@ return {
             }
         },
         opts = {
-            -- A list of parser names, or "all" 
+            -- A list of parser names, or "all"
             ensure_installed = {
                 "c", "lua", "vim", "vimdoc", "query", -- (these five parsers should always be installed)
                 "python", "rust", "diff",
@@ -50,6 +50,11 @@ return {
                         ["if"] = "@function.inner",
                         ["ac"] = "@class.outer",
                         ["ic"] = "@class.inner",
+                        ["as"] = {
+                            query = "@scope",
+                            query_group = "locals",
+                            desc = "Select language scope",
+                        },
                     },
                 },
                 move = {
@@ -58,6 +63,13 @@ return {
                     goto_next_start = {
                         ["]m"] = "@function.outer",
                         ["]]"] = "@class.outer",
+                        ["]o"] = "@loop.*",
+                        ["]s"] = {
+                            query = "@scope",
+                            query_group = "locals",
+                            desc = "Next scope",
+                        },
+                        ["]p"] = "@parameter.inner",
                     },
                     goto_next_end = {
                         ["]M"] = "@function.outer",
@@ -66,6 +78,12 @@ return {
                     goto_previous_start = {
                         ["[m"] = "@function.outer",
                         ["[["] = "@class.outer",
+                        ["[s"] = {
+                            query = "@scope",
+                            query_group = "locals",
+                            desc = "Previous scope",
+                        },
+                        ["[p"] = "@parameter.inner",
                     },
                     goto_previous_end = {
                         ["[M"] = "@function.outer",
@@ -76,6 +94,15 @@ return {
                    enable = true,
                    swap_next = {["<leader>xp"] = "@parameter.inner"},
                    swap_previous = {["<leader>xP"] = "@parameter.inner"},
+                },
+                lsp_interop = {
+                    enable = true,
+                    border = "none",
+                    floating_preview_opts = {},
+                    peek_definition_code = {
+                        ["<leader>df"] = "@function.outer",
+                        ["<leader>dF"] = "@class.outer",
+                    },
                 },
             },
 
