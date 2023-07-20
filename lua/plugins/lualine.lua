@@ -33,7 +33,7 @@ local function mixed_indent()
 end
 
 local function line_numbers()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local row, col = table.unpack(vim.api.nvim_win_get_cursor(0))
     local total_lines = vim.api.nvim_buf_line_count(0)
     local progress = math.floor((row / total_lines) * 100)
 

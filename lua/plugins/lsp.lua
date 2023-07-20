@@ -1,11 +1,11 @@
 return {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         local lspconfig = require("lspconfig")
-        lspconfig.clangd.setup{}
-        lspconfig.pyright.setup{}
-        lspconfig.rust_analyzer.setup{}
+        lspconfig.clangd.setup {}
+        lspconfig.pyright.setup {}
+        lspconfig.rust_analyzer.setup {}
         lspconfig.lua_ls.setup {
             settings = {
                 Lua = {
