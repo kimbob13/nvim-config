@@ -15,13 +15,13 @@ return {
             call SetupCommandAlias("cs", "Cscope")
         ]])
 
-        vim.keymap.set("n", "<F5>", ":Cscope build<CR>", { noremap = true })
+        vim.keymap.set("n", "<F5>", ":Cscope build<CR>", { noremap = true, silent = true, })
     end,
     opts = {
         cscope = {
             picker = "telescope",
             skip_picker_for_single_result = true,
-            db_build_cmd_args = { "-bcqR" },
+            db_build_cmd_args = { "-bqkR" },
         },
     },
     config = function(_, opts)
