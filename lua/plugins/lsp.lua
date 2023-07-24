@@ -4,7 +4,19 @@ return {
     config = function()
         local lspconfig = require("lspconfig")
         lspconfig.clangd.setup {}
-        lspconfig.pyright.setup {}
+        -- lspconfig.pyright.setup {}
+        lspconfig.pylsp.setup {
+            settings = {
+                pylsp = {
+                    plugins = {
+                        pycodestyle = {
+                            ignore = {"W391"},
+                            maxLineLength = 100,
+                        }
+                    }
+                }
+            }
+        }
         lspconfig.rust_analyzer.setup {}
         lspconfig.lua_ls.setup {
             settings = {
