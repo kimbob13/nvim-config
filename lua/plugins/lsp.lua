@@ -17,7 +17,29 @@ local M = {
                 }
             }
         }
-        lspconfig.rust_analyzer.setup {}
+        lspconfig.rust_analyzer.setup {
+            on_attach = function(client)
+                require"completion".on_attach(client)
+            end,
+            settings = {
+                ["rust-analyzer"] = {
+                    imports = {
+                        granularity = {
+                            group = "module",
+                        },
+                        prefix = "self",
+                    },
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                    },
+                    procMacro = {
+                        enable = true,
+                    },
+                },
+            },
+        }
         lspconfig.lua_ls.setup {
             settings = {
                 Lua = {
