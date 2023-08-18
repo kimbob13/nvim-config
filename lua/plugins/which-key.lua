@@ -13,6 +13,7 @@ return {
                 f = {
                     name = "+telescope-basic",
                     f = { ":Telescope find_files<CR>", "Find files" },
+                    g = { ":Telescope grep_string<CR>", "Grep string" },
                     b = { ":Telescope buffers<CR>", "Find buffers" },
                     h = { ":Telescope help_tags<CR>", "Help tags" },
                 },
@@ -21,6 +22,8 @@ return {
                     c = { ":Telescope git_commits<CR>", "Git commits" },
                     b = { ":Telescope git_branches<CR>", "Git branches" },
                     s = { ":Telescope git_status<CR>", "Git status" },
+                    t = { ":Telescope git_stash<CR>", "Git stash" },
+                    d = { ":Telescope git_bcommits<CR>", "Git bcommits (current buffer commit diff)" },
                 }
             },
             ["<leader>/"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Telescope: Live grep" },
