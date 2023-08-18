@@ -23,7 +23,7 @@ return {
                     s = { ":Telescope git_status<CR>", "Git status" },
                 }
             },
-            ["<leader>/"] = { ":Telescope live_grep<CR>", "Telescope: Live grep" },
+            ["<leader>/"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Telescope: Live grep" },
 
             -- ctags
             ["<leader>]"] = { ':vsp <CR>:exec("tag ".expand("<cword>"))<CR>', "Ctags vertical split" },
