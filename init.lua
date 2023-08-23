@@ -15,7 +15,7 @@ set.inccommand = "split"
 set.incsearch = true
 set.ttimeoutlen = 0
 set.wildmenu = true
-set.completeopt = { "menuone", "noinsert", "noselect" }
+set.completeopt = { "menu", "menuone", "noselect" }
 
 set.number = true
 set.cursorline = true
