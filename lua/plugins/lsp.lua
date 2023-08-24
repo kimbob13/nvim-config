@@ -5,10 +5,10 @@ local has_words_before = function()
 end
 
 local M = {
-    "neovim/nvim-lspconfig",
+    "hrsh7th/nvim-cmp",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/nvim-cmp",
+        "neovim/nvim-lspconfig",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-buffer",

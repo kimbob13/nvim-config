@@ -46,7 +46,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = "\\"
-require("lazy").setup("plugins", {
+local opts = {
+    install = {
+        colorscheme = { "monokai-pro" },
+    },
     performance = {
         rtp = {
             disabled_plugins = {
@@ -58,9 +61,12 @@ require("lazy").setup("plugins", {
                 "tohtml",
                 "tutor",
                 "zipPlugin",
+                "rplugin",
+                "editorconfig",
             },
         },
     },
-})
+}
+require("lazy").setup("plugins", opts)
 
 vim.cmd[[colorscheme monokai-pro]]

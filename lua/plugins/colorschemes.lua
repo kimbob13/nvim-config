@@ -1,6 +1,7 @@
 local monokai_pro = {
     "loctvl842/monokai-pro.nvim",
     lazy = false,
+    priority = 1000,
     opts = {
         transparent_background = false,
         devicons = true,
@@ -18,11 +19,14 @@ local monokai_pro = {
         background_clear = {
             "notify",
         },
+        plugins = {
+            bufferline = {
+                underline_selected = true,
+            },
+        }
     },
     config = function(_, opts)
-        local monokai = require("monokai-pro")
-        monokai.setup(opts)
-        monokai.load()
+        require("monokai-pro").setup(opts)
     end,
 }
 
