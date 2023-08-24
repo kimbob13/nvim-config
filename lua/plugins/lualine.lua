@@ -55,6 +55,7 @@ return {
     opts = {
         options = {
             theme = "onedark",
+            globalstatus = true,
         },
         sections = {
             lualine_c = { { "filename", path = 1 } },

@@ -8,8 +8,8 @@ return {
     config = function()
         local wk = require("which-key")
         local keymaps = {
-            -- telescope
             ["<leader>"] = {
+                -- telescope
                 f = {
                     name = "+telescope-basic",
                     f = { ":Telescope find_files<CR>", "Find files" },
@@ -24,7 +24,11 @@ return {
                     s = { ":Telescope git_status<CR>", "Git status" },
                     t = { ":Telescope git_stash<CR>", "Git stash" },
                     d = { ":Telescope git_bcommits<CR>", "Git bcommits (current buffer commit diff)" },
-                }
+                },
+
+                -- leap.nvim
+                s = { "<Plug>(leap-forward-to)", "leap.nvim: forward search" },
+                S = { "<Plug>(leap-backward-to)", "leap.nvim: backward search" },
             },
             ["<leader>/"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", "Telescope: Live grep" },
 

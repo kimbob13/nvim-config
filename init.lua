@@ -5,13 +5,17 @@ local set = vim.opt
 
 -- Tab size
 set.expandtab = true
+set.smarttab = true
 set.tabstop = 4
 set.softtabstop = 4
 set.shiftwidth = 4
 
+set.smartindent = true
+set.autoindent = true
+
 set.mouse = "a"
 set.hidden = true
-set.inccommand = "split"
+set.inccommand = ""
 set.incsearch = true
 set.ttimeoutlen = 0
 set.wildmenu = true
@@ -24,6 +28,11 @@ set.title = true
 set.encoding = "UTF-8"
 set.background = "dark"
 set.termguicolors = true
+
+set.swapfile = false
+set.clipboard = "unnamedplus"
+set.grepprg = "rg --vimgrep"
+set.grepformat = "%f:%l:%c:%m"
 
 -- set.relativenumber = true
 -- set.splitbelow = true
