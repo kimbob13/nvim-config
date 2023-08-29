@@ -30,6 +30,10 @@ set.background = "dark"
 set.termguicolors = true
 
 set.swapfile = false
+set.backup = false
+set.writebackup = false
+set.updatetime = 300
+
 -- set.clipboard = "unnamedplus"
 set.grepprg = "rg --vimgrep"
 set.grepformat = "%f:%l:%c:%m"

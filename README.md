@@ -6,7 +6,7 @@ Due to requirements of some plugins, recommend [latest release of Neovim](https:
 - LSP server
     - [clangd](https://clangd.llvm.org/): For C LSP
     - [python-lsp-server](https://github.com/python-lsp/python-lsp-server): For Python LSP
-    - [lua-language-server](https://github.com/LuaLS/lua-language-server): For Lua LSP.
+    - [lua-language-server](https://github.com/LuaLS/lua-language-server): For Lua LSP
 - [ripgrep](https://github.com/BurntSushi/ripgrep): For [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) live grep
 - [cscope](https://cscope.sourceforge.net/): For [cscope_maps.nvim](https://github.com/dhananjaylatkar/cscope_maps.nvim)
 - [bear](https://github.com/rizsotto/Bear) (Optional): For C LSP. Using `compile_commands.json`, the syntax highlighting could be more informative.
