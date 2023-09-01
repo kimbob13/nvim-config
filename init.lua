@@ -38,7 +38,7 @@ set.updatetime = 300
 set.grepprg = "rg --vimgrep"
 set.grepformat = "%f:%l:%c:%m"
 
--- set.relativenumber = true
+set.relativenumber = true
 -- set.splitbelow = true
 -- set.splitright = true
 
