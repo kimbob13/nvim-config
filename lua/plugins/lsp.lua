@@ -34,8 +34,8 @@ local M = {
                 end,
             },
             window = {
-                -- completion = cmp.config.window.bordered(),
-                -- documentation = cmp.config.window.bordered(),
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
             mapping = cmp.mapping.preset.insert({
                 ["<Tab>"] = cmp.mapping(function(fallback)
@@ -202,6 +202,11 @@ vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", {}),
     callback = function(ev)
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if client.server_capabilities.signatureHelpProvider then
+            client.server_capabilities.signatureHelpProvider.triggerCharacters = {}
+        end
+
         -- Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
