@@ -42,6 +42,8 @@ set.relativenumber = true
 -- set.splitbelow = true
 -- set.splitright = true
 
+vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], { noremap=true })
+
 -----------------------------------------------------------
 ---- lazy.nvim                                            |
 -----------------------------------------------------------
