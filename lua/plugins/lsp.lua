@@ -187,7 +187,7 @@ local M = {
       },
       capabilities = capabilities,
     }
-    lspconfig.ruby_ls.setup {
+    lspconfig.solargraph.setup {
       capabilities = capabilities,
     }
   end,
