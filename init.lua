@@ -40,39 +40,54 @@ vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], { noremap = true })
 -----------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazypath,
-    })
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable",     -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
 vim.g.mapleader = "\\"
 local opts = {
-    install = {
-        colorscheme = { "monokai-pro" },
+  install = {
+    colorscheme = { "monokai-pro" },
+  },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "matchit",
+        "matchparen",
+        -- "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+        "rplugin",
+        "editorconfig",
+      },
     },
-    performance = {
-        rtp = {
-            disabled_plugins = {
-                "gzip",
-                "matchit",
-                "matchparen",
-                -- "netrwPlugin",
-                "tarPlugin",
-                "tohtml",
-                "tutor",
-                "zipPlugin",
-                "rplugin",
-                "editorconfig",
-            },
-        },
-    },
+  },
 }
 require("lazy").setup("plugins", opts)
 
-vim.cmd[[colorscheme monokai-pro]]
+vim.cmd [[colorscheme monokai-pro]]
+
+-----------------------------------------------------------
+---- lua specific indentation                             |
+-----------------------------------------------------------
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "*" },
+  callback = function(args)
+    local ft = vim.bo[args.buf].filetype
+    if ft == "lua" then
+      set.tabstop = 2
+      set.softtabstop = 2
+      set.shiftwidth = 2
+    end
+  end
+})

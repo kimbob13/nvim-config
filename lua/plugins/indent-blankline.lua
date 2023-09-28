@@ -1,4 +1,4 @@
 return {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "BufReadPre",
+  "lukas-reineke/indent-blankline.nvim",
+  event = "BufReadPre",
 }
