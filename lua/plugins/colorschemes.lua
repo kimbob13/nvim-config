@@ -47,6 +47,7 @@ local onedark = {
 
 local tokyonight = {
   "folke/tokyonight.nvim",
+  enabled = false,
   opts = {
     style = "storm",
     styles = {

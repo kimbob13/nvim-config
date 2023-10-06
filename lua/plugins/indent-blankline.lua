@@ -1,6 +1,6 @@
 return {
   "lukas-reineke/indent-blankline.nvim",
-  event = "BufReadPre",
+  event = "BufReadPost",
   main = "ibl",
   config = function()
     require("config.indent-blankline")

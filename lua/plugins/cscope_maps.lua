@@ -4,6 +4,7 @@ return {
     "nvim-telescope/telescope.nvim",
     "nvim-tree/nvim-web-devicons",
   },
+  ft = { "c", "cpp" },
   init = function()
     -- convert cs command to Cscope
     vim.cmd([[

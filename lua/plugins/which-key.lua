@@ -43,6 +43,9 @@ return {
       },
       ["<C-h>"] = { ":bprevious<CR>", "Go to left buffer" },
       ["<C-l>"] = { ":bnext<CR>", "Go to right buffer" },
+
+      -- symbols outline
+      ["<F8>"] = { ":SymbolsOutline<CR>", "Symbols Outline", noremap = true },
     }
 
     wk.register(keymaps)

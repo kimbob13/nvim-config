@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  event = "BufReadPre",
+  event = "VeryLazy",
   tag = "0.1.2",
   dependencies = {
     "nvim-lua/plenary.nvim",

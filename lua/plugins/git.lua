@@ -1,14 +1,14 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
-    event = "BufReadPre",
+    event = "BufReadPost",
     config = function()
       require("gitsigns").setup()
     end,
   },
   {
     "sindrets/diffview.nvim",
-    event = "VeryLazy",
+    event = "BufReadPost",
     opts = {
       enhanced_diff_hl = false,
     },

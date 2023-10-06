@@ -111,13 +111,42 @@ cmp.event:on(
 )
 
 -----------------------------------------------------------
+---- barbecue and nvim-navic                              |
+-----------------------------------------------------------
+require("barbecue").setup({
+  create_autocmd = false,
+  attach_navic = false,
+})
+
+vim.api.nvim_create_autocmd({
+  "WinScrolled", -- or WinResized on NVIM-v0.9 and higher
+  "BufWinEnter",
+  "CursorHold",
+  "InsertLeave",
+
+  -- include this if you have set `show_modified` to `true`
+  "BufModifiedSet",
+}, {
+  group = vim.api.nvim_create_augroup("barbecue.updater", {}),
+  callback = function()
+    require("barbecue.ui").update()
+  end,
+})
+
+-----------------------------------------------------------
 ---- lsp config                                           |
 -----------------------------------------------------------
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local on_attach = function(client, bufnr)
+  if client.server_capabilities.documentSymbolProvider then
+    require("nvim-navic").attach(client, bufnr)
+  end
+end
 
 -- clangd
 lspconfig.clangd.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- pylsp
@@ -133,12 +162,16 @@ lspconfig.pylsp.setup {
     }
   },
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- rust-analyaer
 lspconfig.rust_analyzer.setup {
-  on_attach = function(client)
+  on_attach = function(client, bufnr)
     require "completion".on_attach(client)
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, bufnr)
+    end
   end,
   settings = {
     ["rust-analyzer"] = {
@@ -180,11 +213,13 @@ lspconfig.lua_ls.setup {
     },
   },
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -- solargraph (ruby lsp server)
 lspconfig.solargraph.setup {
   capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 -----------------------------------------------------------

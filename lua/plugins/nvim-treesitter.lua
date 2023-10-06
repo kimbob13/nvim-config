@@ -3,11 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
-    dependencies = {
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-      }
-    },
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = {
       -- A list of parser names, or "all"
       ensure_installed = {
