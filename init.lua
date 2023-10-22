@@ -95,8 +95,8 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------------------------------------------------------
 ---- neovide specific config                              |
 -----------------------------------------------------------
+vim.o.guifont = "CaskaydiaCove Nerd Font:h12"
 if vim.g.neovide then
-  vim.o.guifont = "CaskaydiaCove Nerd Font:h12"
   vim.g.neovide_scale_factor = 1.0
   vim.g.neovide_scroll_animation_length = 0.3
   vim.g.neovide_refresh_rate = 60
