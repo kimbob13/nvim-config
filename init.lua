@@ -20,6 +20,7 @@ set.cursorline = true
 set.signcolumn = "yes:1"
 set.title = true
 set.termguicolors = true
+set.laststatus = 3
 
 set.swapfile = false
 set.backup = false
