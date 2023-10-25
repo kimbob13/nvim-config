@@ -97,6 +97,10 @@ vim.api.nvim_create_autocmd("FileType", {
 ---- neovide specific config                              |
 -----------------------------------------------------------
 vim.o.guifont = "CaskaydiaCove Nerd Font:h12"
+vim.api.nvim_set_keymap("", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("!", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.0
   vim.g.neovide_scroll_animation_length = 0.3

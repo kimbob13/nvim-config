@@ -136,6 +136,8 @@ vim.api.nvim_create_autocmd({
 -----------------------------------------------------------
 ---- lsp config                                           |
 -----------------------------------------------------------
+vim.lsp.set_log_level("off")
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
@@ -167,12 +169,7 @@ lspconfig.pylsp.setup {
 
 -- rust-analyaer
 lspconfig.rust_analyzer.setup {
-  on_attach = function(client, bufnr)
-    require "completion".on_attach(client)
-    if client.server_capabilities.documentSymbolProvider then
-      require("nvim-navic").attach(client, bufnr)
-    end
-  end,
+  on_attach = on_attach,
   settings = {
     ["rust-analyzer"] = {
       imports = {
