@@ -42,21 +42,19 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
+
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }),         -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   }),
-  sources = cmp.config.sources(
-    {
+  sources = cmp.config.sources({
       { name = "nvim_lsp" },
       { name = "luasnip" },
-    },
-    {
+    }, {
       { name = "buffer" },
-    }
-  ),
+  })
 })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
@@ -118,6 +116,11 @@ end
 -----------------------------------------------------------
 ---- lsp config                                           |
 -----------------------------------------------------------
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = { "clangd", "pylsp", "lua_ls" },
+})
+
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -135,24 +138,15 @@ lspconfig.pylsp.setup {
     pylsp = {
       plugins = {
         pycodestyle = {
-          ignore = { "W391" },
+          ignore = {
+            "W391", -- blank line at end of file
+            "W503", -- line break before binary operator
+            "E221", -- multiple spaces before operator
+          },
           maxLineLength = 100,
         }
       }
     }
-  },
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- rust-analyaer
-lspconfig.rust_analyzer.setup {
-  settings = {
-    ["rust-analyzer"] = {
-      diagnostics = {
-        enable = false,
-      },
-    },
   },
   capabilities = capabilities,
   on_attach = on_attach,
@@ -172,6 +166,19 @@ lspconfig.lua_ls.setup {
         library = vim.api.nvim_get_runtime_file("", true),
       },
       telementry = {
+        enable = false,
+      },
+    },
+  },
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- rust-analyaer
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ["rust-analyzer"] = {
+      diagnostics = {
         enable = false,
       },
     },

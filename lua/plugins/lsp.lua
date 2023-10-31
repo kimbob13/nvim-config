@@ -1,5 +1,11 @@
 local enabled_ft = { "c", "cpp", "python", "lua", "rust", "ruby" }
 
+local mason = {
+  "williamboman/mason.nvim",
+  dependencies = {"williamboman/mason-lspconfig.nvim"},
+  ft = enabled_ft,
+}
+
 local nvim_lspconfig = {
   "neovim/nvim-lspconfig",
   ft = enabled_ft,
@@ -48,6 +54,6 @@ local symbols_outline = {
   end,
 }
 
-local M = { nvim_lspconfig, barbecue, nvim_cmp, symbols_outline }
+local M = { mason, nvim_lspconfig, barbecue, nvim_cmp, symbols_outline }
 
 return M
