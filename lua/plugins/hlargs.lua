@@ -1,11 +1,15 @@
 return {
   "m-demare/hlargs.nvim",
-  event = "BufReadPost",
-  ft = { "python" },
+  ft = { "python", "ruby" },
   config = function()
     require("hlargs").setup({
       color = "#fc9867",
-      paint_arg_declarations = false,
+      excluded_argnames = {
+        declarations = {
+          python = { "self", "cls" },
+          lua = { "self" },
+        },
+      },
     })
   end,
 }
