@@ -68,7 +68,7 @@ local opts = {
         "tohtml",
         "tutor",
         "zipPlugin",
-        "rplugin",
+        -- "rplugin",
         "editorconfig",
       },
     },

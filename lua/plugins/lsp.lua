@@ -54,6 +54,12 @@ local symbols_outline = {
   end,
 }
 
-local M = { mason, nvim_lspconfig, barbecue, nvim_cmp, symbols_outline }
+local M = {
+  mason,
+  nvim_lspconfig,
+  nvim_cmp,
+  barbecue,
+  symbols_outline,
+}
 
 return M

@@ -36,16 +36,16 @@ return {
           key = "f",
         },
         {
-          desc = " Dotfiles",
+          desc = " Check Update",
           group = "Number",
-          action = "Telescope find_files hidden=true",
-          key = "d",
+          action = "Lazy check",
+          key = "c",
         },
         {
-          desc = "󰊳 Check Update",
+          desc = "󰊳 Restore Plugins",
           group = "@property",
-          action = "Lazy check",
-          key = "c"
+          action = "Lazy restore",
+          key = "r"
         },
         {
           desc = " Profile",
