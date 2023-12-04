@@ -8,12 +8,12 @@ end
 ---- nvim-cmp setup                                       |
 -----------------------------------------------------------
 local cmp = require("cmp")
-local luasnip = require("luasnip")
+local snippy = require("snippy")
 
 cmp.setup({
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body)
+      snippy.expand_snippet(args.body)
     end,
   },
   window = {
@@ -24,8 +24,8 @@ cmp.setup({
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+      elseif snippy.can_expand_or_advance() then
+        snippy.expand_or_advance()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -36,8 +36,8 @@ cmp.setup({
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
+      elseif snippy.can_jump(-1) then
+        snippy.previous()
       else
         fallback()
       end

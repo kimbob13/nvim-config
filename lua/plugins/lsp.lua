@@ -34,12 +34,8 @@ local nvim_cmp = {
     "hrsh7th/cmp-cmdline",
 
     -- snippets
-    {
-      "L3MON4D3/LuaSnip",
-      version = "v2.*",
-      build = "make install_jsregexp",
-    },
-    "saadparwaiz1/cmp_luasnip",
+    "dcampos/nvim-snippy",
+    "dcampos/cmp-snippy",
   },
   config = function()
     require("config.lsp")
