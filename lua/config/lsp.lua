@@ -128,6 +128,10 @@ vim.lsp.set_log_level("off")
 
 -- clangd
 lspconfig.clangd.setup {
+  cmd = {
+    "clangd",
+    "--header-insertion=never",
+  },
   capabilities = capabilities,
   on_attach = on_attach,
 }

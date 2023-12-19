@@ -35,6 +35,10 @@ set.grepformat = "%f:%l:%c:%m"
 -- set.splitright = true
 
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], { noremap = true })
+vim.api.nvim_create_autocmd("FocusGained", {
+  pattern = "*",
+  command = "checktime",
+})
 
 -----------------------------------------------------------
 ---- lazy.nvim                                            |
