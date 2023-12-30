@@ -145,6 +145,7 @@ lspconfig.pylsp.setup {
           ignore = {
             "W391", -- blank line at end of file
             "W503", -- line break before binary operator
+            "E203", -- whitespace before :
             "E221", -- multiple spaces before operator
           },
           maxLineLength = 100,
