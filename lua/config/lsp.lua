@@ -186,6 +186,12 @@ lspconfig.rust_analyzer.setup {
       diagnostics = {
         enable = false,
       },
+      -- cargo = {
+      --   target = "riscv32i-unknown-none-elf",
+      -- },
+      checkOnSave = {
+        allTargets = false,
+      },
     },
   },
   capabilities = capabilities,
