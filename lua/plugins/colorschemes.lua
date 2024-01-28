@@ -31,33 +31,15 @@ local monokai_pro = {
   end,
 }
 
-local onedark = {
-  "navarasu/onedark.nvim",
-  enabled = false,
-  lazy = false,
-  opts = {
-    style = "dark",
-    code_style = {
-      comments = "italic",
-      keywords = "none",
-      functions = "none",
-      strings = "none",
-      variables = "none"
-    },
-  },
-  config = function(_, opts)
-    require("onedark").setup(opts)
-  end,
-}
-
 local tokyonight = {
   "folke/tokyonight.nvim",
-  enabled = false,
+  lazy = false,
+  priority = 1000,
   opts = {
-    style = "storm",
+    style = "moon",
     styles = {
-      comments = { italic = false },
-      keywords = { italic = false },
+      comments = { italic = true },
+      keywords = { italic = true },
       functions = { italic = false },
       variables = { italic = false },
     },
@@ -97,6 +79,7 @@ local tokyonight = {
 local catppuccin = {
   "catppuccin/nvim",
   name = "catppuccin",
+  enabled = false,
   lazy = false,
   priority = 1000,
   opts = {
@@ -110,6 +93,26 @@ local catppuccin = {
   },
   config = function(_, opts)
     require("catppuccin").setup(opts)
+  end,
+}
+
+local onedark = {
+  "navarasu/onedark.nvim",
+  enabled = false,
+  lazy = false,
+  priority = 1000,
+  opts = {
+    style = "dark",
+    code_style = {
+      comments = "italic",
+      keywords = "none",
+      functions = "none",
+      strings = "none",
+      variables = "none"
+    },
+  },
+  config = function(_, opts)
+    require("onedark").setup(opts)
   end,
 }
 

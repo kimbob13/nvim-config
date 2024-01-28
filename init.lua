@@ -80,7 +80,7 @@ local opts = {
 }
 require("lazy").setup("plugins", opts)
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme tokyonight]]
 
 -----------------------------------------------------------
 ---- lua specific indentation                             |

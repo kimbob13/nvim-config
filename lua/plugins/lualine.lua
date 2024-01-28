@@ -54,7 +54,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      theme = "catppuccin",
+      theme = "tokyonight",
       globalstatus = true,
     },
     sections = {
