@@ -1,14 +1,13 @@
 local monokai_pro = {
   "loctvl842/monokai-pro.nvim",
-  enabled = false,
   lazy = false,
   priority = 1000,
   opts = {
     transparent_background = false,
     devicons = true,
     styles = {
-      comment = { italic = false },
-      keyword = { italic = false },             -- any other keyword
+      comment = { italic = true },
+      keyword = { italic = true },             -- any other keyword
       type = { italic = false },                -- (preferred) int, long, char, etc
       storageclass = { italic = false },        -- static, register, volatile, etc
       structure = { italic = false },           -- struct, union, enum, etc
@@ -24,7 +23,13 @@ local monokai_pro = {
       bufferline = {
         underline_selected = true,
       },
-    }
+    },
+    override = function(c)
+      return {
+        ["@keyword"] = { fg = c.base.red },
+        ["@keyword.rust"] = { fg = c.base.cyan },
+      }
+    end,
   },
   config = function(_, opts)
     require("monokai-pro").setup(opts)
@@ -33,6 +38,7 @@ local monokai_pro = {
 
 local tokyonight = {
   "folke/tokyonight.nvim",
+  enabled = false,
   lazy = false,
   priority = 1000,
   opts = {

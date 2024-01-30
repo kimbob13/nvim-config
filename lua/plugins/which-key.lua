@@ -24,6 +24,9 @@ return {
           s = { ":Telescope git_status<CR>", "Git status" },
           t = { ":Telescope git_stash<CR>", "Git stash" },
           d = { ":Telescope git_bcommits<CR>", "Git bcommits (current buffer commit diff)" },
+
+          -- git-blame
+          l = { ":GitBlameToggle<CR>", "Git blame" },
         },
 
         -- leap.nvim

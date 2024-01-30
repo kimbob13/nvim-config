@@ -31,8 +31,8 @@ set.updatetime = 200
 set.grepprg = "rg --vimgrep"
 set.grepformat = "%f:%l:%c:%m"
 
--- set.splitbelow = true
--- set.splitright = true
+set.splitbelow = true
+set.splitright = true
 
 vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], { noremap = true })
 vim.api.nvim_create_autocmd("FocusGained", {
@@ -80,7 +80,7 @@ local opts = {
 }
 require("lazy").setup("plugins", opts)
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme monokai-pro]]
 
 -----------------------------------------------------------
 ---- lua specific indentation                             |
