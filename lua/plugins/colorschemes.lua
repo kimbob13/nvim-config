@@ -24,12 +24,6 @@ local monokai_pro = {
         underline_selected = true,
       },
     },
-    override = function(c)
-      return {
-        ["@keyword"] = { fg = c.base.red },
-        ["@keyword.rust"] = { fg = c.base.cyan },
-      }
-    end,
   },
   config = function(_, opts)
     require("monokai-pro").setup(opts)
