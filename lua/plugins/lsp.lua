@@ -36,6 +36,9 @@ local nvim_cmp = {
     -- snippets
     "dcampos/nvim-snippy",
     "dcampos/cmp-snippy",
+
+    -- menu icons
+    "onsails/lspkind.nvim",
   },
   config = function()
     require("config.lsp")
