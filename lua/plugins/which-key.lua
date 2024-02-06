@@ -29,6 +29,16 @@ return {
           l = { ":GitBlameToggle<CR>", "Git blame" },
         },
 
+        l = {
+          name = "+telescope-lsp",
+          r = { ":Telescope lsp_references<CR>", "LSP references" },
+          i = { ":Telescope lsp_incoming_calls<CR>", "LSP incoming calls" },
+          o = { ":Telescope lsp_outgoing_calls<CR>", "LSP outgoing calls" },
+          s = { ":Telescope lsp_document_symbols<CR>", "LSP document symbols" },
+          d = { ":Telescope diagnostics<CR>", "LSP diagnostics" },
+
+        },
+
         -- leap.nvim
         s = { "<Plug>(leap-forward-to)", "leap.nvim: forward search" },
         S = { "<Plug>(leap-backward-to)", "leap.nvim: backward search" },
