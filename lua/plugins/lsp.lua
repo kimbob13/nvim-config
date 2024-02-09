@@ -1,4 +1,7 @@
-local enabled_ft = { "c", "cpp", "python", "lua", "rust", "ruby" }
+local enabled_ft = {
+  "c", "cpp", "python", "lua", "rust", -- essential
+  "ruby", "javascript", "typescript",  -- hobby
+}
 
 local mason = {
   "williamboman/mason.nvim",

@@ -216,6 +216,12 @@ lspconfig.solargraph.setup {
   on_attach = on_attach,
 }
 
+-- tsserver (typescript and javascript)
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 -----------------------------------------------------------
 ---- lsp config keymap                                    |
 -----------------------------------------------------------
