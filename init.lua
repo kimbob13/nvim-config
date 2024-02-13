@@ -100,7 +100,12 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------------------------------------------------------
 ---- neovide specific config                              |
 -----------------------------------------------------------
-vim.o.guifont = "CaskaydiaCove Nerd Font:h12"
+local font_size = "12"
+if vim.fn.has("macunix") then
+  font_size = "14"
+end
+
+vim.o.guifont = "CaskaydiaCove Nerd Font:h" .. font_size
 vim.api.nvim_set_keymap("", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("!", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
