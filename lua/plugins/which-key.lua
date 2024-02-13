@@ -42,6 +42,14 @@ return {
         -- leap.nvim
         s = { "<Plug>(leap-forward-to)", "leap.nvim: forward search" },
         S = { "<Plug>(leap-backward-to)", "leap.nvim: backward search" },
+
+        -- session-manager
+        m = {
+          name = "+session-manager",
+          l = { ":SessionManager load_session<CR>", "Load Session" },
+          t = { ":SessionManager load_last_session<CR>", "Load Last Session" },
+          s = { ":SessionManager save_current_session<CR>", "Save Current Session" },
+        }
       },
       ["<leader>/"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
         "Telescope: Live grep" },
