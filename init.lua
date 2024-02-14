@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("FileType", {
 ---- neovide specific config                              |
 -----------------------------------------------------------
 local font_size = "12"
-if vim.fn.has("macunix") then
+if vim.loop.os_uname().sysname == "Darwin" then
   font_size = "14"
 end
 
