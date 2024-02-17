@@ -1,6 +1,6 @@
 local enabled_ft = {
   "c", "cpp", "python", "lua", "rust", -- essential
-  "ruby", "javascript", "typescript",  -- hobby
+  "ruby", "javascript", "typescript", "vue",  -- hobby
 }
 
 local mason = {

@@ -222,6 +222,12 @@ lspconfig.tsserver.setup {
   on_attach = on_attach,
 }
 
+-- volar (Vue.js)
+lspconfig.volar.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 -----------------------------------------------------------
 ---- lsp config keymap                                    |
 -----------------------------------------------------------
