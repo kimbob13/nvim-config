@@ -13,6 +13,7 @@ set.smartindent = true
 set.mouse = "a"
 set.inccommand = ""
 set.completeopt = { "menu", "menuone", "noselect" }
+set.fileformats = { "unix", "dos" }
 
 set.number = true
 set.relativenumber = true
