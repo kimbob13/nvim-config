@@ -128,11 +128,6 @@ end
 -----------------------------------------------------------
 ---- lsp config                                           |
 -----------------------------------------------------------
-require("mason").setup()
-require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "pylsp", "lua_ls" },
-})
-
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
