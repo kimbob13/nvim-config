@@ -1,11 +1,13 @@
 local lsp_ft = require("util.lsp_ft")
-local enabled_ft = vim.tbl_values(
-  vim.tbl_deep_extend("error", lsp_ft.required, lsp_ft.optional)
+local enabled_ft = vim.tbl_flatten(
+  vim.tbl_values(
+    vim.tbl_deep_extend("error", lsp_ft.required, lsp_ft.optional)
+  )
 )
 
 local mason = {
   "williamboman/mason.nvim",
-  dependencies = {"williamboman/mason-lspconfig.nvim"},
+  dependencies = { "williamboman/mason-lspconfig.nvim" },
   ft = enabled_ft,
 }
 
@@ -26,23 +28,10 @@ local barbecue = {
   opts = {},
 }
 
-local nvim_cmp = {
-  "hrsh7th/nvim-cmp",
+local cmp_nvim_lsp = {
+  "hrsh7th/cmp-nvim-lsp",
   ft = enabled_ft,
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lua",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-cmdline",
-
-    -- snippets
-    "dcampos/nvim-snippy",
-    "dcampos/cmp-snippy",
-
-    -- menu icons
-    "onsails/lspkind.nvim",
-  },
+  dependencies = { "hrsh7th/nvim-cmp" },
   config = function()
     require("config.lsp")
   end,
@@ -56,12 +45,10 @@ local symbols_outline = {
   end,
 }
 
-local M = {
+return {
   mason,
   nvim_lspconfig,
-  nvim_cmp,
+  cmp_nvim_lsp,
   barbecue,
   symbols_outline,
 }
-
-return M

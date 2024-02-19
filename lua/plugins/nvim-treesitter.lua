@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = {
       -- A list of parser names, or "all"
