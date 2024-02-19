@@ -128,9 +128,13 @@ end
 -----------------------------------------------------------
 ---- lsp config                                           |
 -----------------------------------------------------------
+local optional_lsp = vim.tbl_keys(require("util.lsp_ft").optional)
+
 require("mason").setup()
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "pylsp", "lua_ls" },
+  automatic_installation = {
+    exclude = optional_lsp,
+  },
 })
 
 local lspconfig = require("lspconfig")
@@ -210,23 +214,13 @@ lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
--- solargraph (ruby lsp server)
-lspconfig.solargraph.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- tsserver (typescript and javascript)
-lspconfig.tsserver.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- volar (Vue.js)
-lspconfig.volar.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
+-- setup optional lsp server
+for _, server_name in pairs(optional_lsp) do
+  lspconfig[server_name].setup {
+    capabilities = capabilities,
+    on_attach = on_attach,
+  }
+end
 
 -----------------------------------------------------------
 ---- lsp config keymap                                    |

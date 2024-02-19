@@ -1,7 +1,7 @@
-local enabled_ft = {
-  "c", "cpp", "python", "lua", "rust", -- essential
-  "ruby", "javascript", "typescript", "vue",  -- hobby
-}
+local lsp_ft = require("util.lsp_ft")
+local enabled_ft = vim.tbl_values(
+  vim.tbl_deep_extend("error", lsp_ft.required, lsp_ft.optional)
+)
 
 local mason = {
   "williamboman/mason.nvim",
