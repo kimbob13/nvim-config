@@ -3,6 +3,12 @@ local enabled_ft = {
   "ruby", "javascript", "typescript", "vue",  -- hobby
 }
 
+local mason = {
+  "williamboman/mason.nvim",
+  dependencies = {"williamboman/mason-lspconfig.nvim"},
+  ft = enabled_ft,
+}
+
 local nvim_lspconfig = {
   "neovim/nvim-lspconfig",
   ft = enabled_ft,
@@ -51,6 +57,7 @@ local symbols_outline = {
 }
 
 local M = {
+  mason,
   nvim_lspconfig,
   nvim_cmp,
   barbecue,
