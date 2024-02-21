@@ -1,5 +1,6 @@
 local monokai_pro = {
   "loctvl842/monokai-pro.nvim",
+  enabled = false,
   lazy = false,
   priority = 1000,
   opts = {
@@ -32,11 +33,10 @@ local monokai_pro = {
 
 local tokyonight = {
   "folke/tokyonight.nvim",
-  enabled = false,
   lazy = false,
   priority = 1000,
   opts = {
-    style = "moon",
+    style = "night",
     styles = {
       comments = { italic = true },
       keywords = { italic = true },

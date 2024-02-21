@@ -81,7 +81,6 @@ sudo pkg install bear
 - [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
 - [mason.nvim](https://github.com/williamboman/mason.nvim)
 - [mini.indentscope](https://github.com/echasnovski/mini.indentscope)
-- [monokai-pro.nvim](https://github.com/loctvl842/monokai-pro.nvim)
 - [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
 - [neovim-session-manager](https://github.com/Shatur/neovim-session-manager)
 - [noice.nvim](https://github.com/folke/noice.nvim)
@@ -97,6 +96,7 @@ sudo pkg install bear
 - [outline.nvim](https://github.com/hedyhli/outline.nvim)
 - [telescope-live-grep-args.nvim](https://github.com/nvim-telescope/telescope-live-grep-args.nvim)
 - [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 

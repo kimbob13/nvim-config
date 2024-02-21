@@ -54,7 +54,7 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      theme = "monokai-pro",
+      theme = "tokyonight",
       globalstatus = true,
     },
     sections = {
