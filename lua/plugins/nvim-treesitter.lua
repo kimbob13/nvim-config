@@ -34,6 +34,16 @@ return {
         additional_vim_regex_highlighting = false,
       },
 
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<CR>",
+          node_incremental = "<CR>",
+          scope_incremental = "<TAB>",
+          node_decremental = "<S-TAB>",
+        },
+      },
+
       ---- treesitter-textobjects configs
       textobjects = {
         select = {
