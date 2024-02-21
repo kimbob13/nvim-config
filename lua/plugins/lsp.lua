@@ -37,11 +37,11 @@ local cmp_nvim_lsp = {
   end,
 }
 
-local symbols_outline = {
-  "simrat39/symbols-outline.nvim",
+local outline_nvim = {
+  "hedyhli/outline.nvim",
   ft = enabled_ft,
   config = function()
-    require("symbols-outline").setup()
+    require("outline").setup()
   end,
 }
 
@@ -50,5 +50,5 @@ return {
   nvim_lspconfig,
   cmp_nvim_lsp,
   barbecue,
-  symbols_outline,
+  outline_nvim,
 }
