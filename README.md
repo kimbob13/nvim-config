@@ -1,113 +1,120 @@
 # nvim-config
-Due to requirements of some plugins, recommend [latest release of Neovim](https://github.com/neovim/neovim/releases/tag/stable) or nightly version
+Due to requirements of some plugins, recommend to use [latest release of Neovim](https://github.com/neovim/neovim/releases/tag/stable) or nightly version
 
 ## Prerequisite
+- git
 - C, C++ compiler: For [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- LSP server
-    - [clangd](https://clangd.llvm.org/): For C LSP
-    - [python-lsp-server](https://github.com/python-lsp/python-lsp-server): For Python LSP
-    - [lua-language-server](https://github.com/LuaLS/lua-language-server): For Lua LSP
 - [ripgrep](https://github.com/BurntSushi/ripgrep): For [Telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) live grep
 - [cscope](https://cscope.sourceforge.net/): For [cscope_maps.nvim](https://github.com/dhananjaylatkar/cscope_maps.nvim)
 - [bear](https://github.com/rizsotto/Bear) (Optional): For C LSP. Using `compile_commands.json`, the syntax highlighting could be more informative.
 
-### C, C++ Compiler
+### Debian / Ubuntu
 ```sh
-# Debian / Ubuntu
-sudo apt install build-essential
-
-# Fedora
-sudo dnf install gcc gcc-c++
-
-# Arch
-sudo pacman -S gcc
-
-# FreeBSD ships with pre-installed C/C++ compiler
-```
-
-### clangd
-```sh
-# Debian / Ubuntu
-sudo apt install clangd
-
-# Fedora
-sudo dnf install clang-tools-extra
-
-# Arch
-sudo pacman -S clang
-
-# FreeBSD ships with pre-installed clangd
-# But its binary name is something like 'clangd15', so I make a symbolic link to it.
-sudo ln -s /usr/local/bin/clangd15 /usr/local/bin/clangd
-```
-
-You can also download latest release from official [GitHub](https://github.com/clangd/clangd/releases). Download zip file, unzip, and export the `bin` directory of clangd to `$PATH`.
-
-### python-lsp-server
-```sh
-# pip
-pip install python-lsp-server
-
-# apt (Ubuntu, Debian)
-sudo apt install python3-pylsp
-```
-
-### lua-language-server
-- Download latest release from [GitHub](https://github.com/LuaLS/lua-language-server/releases).
-- You need to export `bin` directory of `lua-language-server` to `$PATH`.
-    - I use a method from [official lua-language-server wiki](https://github.com/LuaLS/lua-language-server/wiki/Getting-Started#command-line), which makes a shell script in the directory belong to `$PATH`
-- Example
-    1. Make the file with contents below and name it as `lua-language-server`. You should make this file executable.
-        ```sh
-        #!/bin/bash
-        exec "<path-to-directory>/bin/lua-language-server" "$@"
-        ```
-    2. Save this file in `$HOME/.local/bin`. You can use your own preferred directory, just make sure it is exported to `$PATH`
-
-### ripgrep
-```sh
-# Debian / Ubuntu
+sudo apt install git
+sudo apt install build-essential # C/C++ compiler
 sudo apt install ripgrep
-
-# Fedora
-sudo dnf install ripgrep
-
-# Arch
-sudo pacman -S ripgrep
-
-# FreeBSD
-sudo pkg install ripgrep
-```
-
-### cscope
-```sh
-# Debian / Ubuntu
 sudo apt install cscope
-
-# Fedora
-sudo dnf install cscope
-
-# Arch
-sudo pacman -S cscope
-
-# FreeBSD
-sudo pkg instlal cscope
+sudo apt install bear
 ```
 
-### bear (Optional)
+### Arch Linux
 ```sh
-# Debian / Ubuntu
-sudo apt install bear
-
-# Fedora
-sudo dnf install bear
-
-# Arch
+sudo pacman -S git
+sudo pacman -S gcc # g++ included in this package
+sudo pacman -S ripgrep
+sudo pacman -S cscope
 sudo pacman -S bear
+```
 
-# FreeBSD
+### Fedora
+```sh
+sudo dnf install git
+sudo dnf install gcc gcc-c++
+sudo dnf install ripgrep
+sudo dnf install cscope
+sudo dnf install bear
+```
+
+
+### Windows
+- Recommend to use [Scoop](https://scoop.sh/) package manager
+- `bear` is not supported in [Windows](https://github.com/rizsotto/Bear/wiki/Usage#windows)
+```sh
+scoop install git
+scoop install gcc
+scoop install ripgrep
+scoop install cscope
+```
+
+### macOS
+- Recommend to use [Homebrew](https://brew.sh/) package manager
+- Default C/C++ compiler in macOS is `clang`, which can be installed with Xcode command line tools
+- `git` also can be installed with Xcode command line tools
+```sh
+brew install ripgrep
+brew install cscope
+brew install bear
+```
+
+### FreeBSD
+- FreeBSD ships with pre-installed C/C++ compiler (`clang`)
+```sh
+sudo pkg install git
+sudo pkg install ripgrep
+sudo pkg install cscope
 sudo pkg install bear
 ```
+
+## Plugins List
+### Explicit
+- [barbecue.nvim](https://github.com/utilyre/barbecue.nvim)
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
+- [cscope_maps.nvim](https://github.com/dhananjaylatkar/cscope_maps.nvim)
+- [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
+- [git-blame.nvim](https://github.com/f-person/git-blame.nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [hlargs.nvim](https://github.com/m-demare/hlargs.nvim)
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [leap.nvim](https://github.com/ggandor/leap.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
+- [mini.indentscope](https://github.com/echasnovski/mini.indentscope)
+- [monokai-pro.nvim](https://github.com/loctvl842/monokai-pro.nvim)
+- [neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [neovim-session-manager](https://github.com/Shatur/neovim-session-manager)
+- [noice.nvim](https://github.com/folke/noice.nvim)
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-highlight-colors](https://github.com/brenoprata10/nvim-highlight-colors)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-surround](https://github.com/kylechui/nvim-surround)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-treesitter-context](https://github.com/nvim-treesitter/nvim-treesitter-context)
+- [nvim-treesitter-textobjects](https://github.com/nvim-treesitter/nvim-treesitter-textobjects)
+- [nvim_context_vt](https://github.com/haringsrob/nvim_context_vt)
+- [outline.nvim](https://github.com/hedyhli/outline.nvim)
+- [telescope-live-grep-args.nvim](https://github.com/nvim-telescope/telescope-live-grep-args.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
+- [which-key.nvim](https://github.com/folke/which-key.nvim)
+
+### Implicit (only for dependency)
+- [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
+- [cmp-cmdline](https://github.com/hrsh7th/cmp-cmdline)
+- [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
+- [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
+- [cmp-path](https://github.com/hrsh7th/cmp-path)
+- [cmp-snippy](https://github.com/dcampos/cmp-snippy)
+- [lspkind.nvim](https://github.com/onsails/lspkind.nvim)
+- [nui.nvim](https://github.com/MunifTanjim/nui.nvim)
+- [nvim-navic](https://github.com/SmiteshP/nvim-navic)
+- [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [nvim-snippy](https://github.com/dcampos/nvim-snippy)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [vim-repeat](https://github.com/tpope/vim-repeat)
 
 ## Language-specific Settings and Remarks.
 ### C
