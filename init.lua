@@ -106,7 +106,7 @@ if vim.loop.os_uname().sysname == "Darwin" then
   font_size = "14"
 end
 
-vim.o.guifont = "CaskaydiaCove Nerd Font:h" .. font_size
+vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h" .. font_size
 vim.api.nvim_set_keymap("", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("!", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
