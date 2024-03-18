@@ -1,4 +1,4 @@
--- key: lsp server name in lspconfig.nvim
+-- key: lsp server name in nvim-lspconfig
 -- value: corresponding filetype in nvim
 return {
   required = {
@@ -11,5 +11,8 @@ return {
     solargraph = { "ruby" },
     tsserver = { "javascript", "typescript" },
     volar = { "vue" },
+    jsonls = { "json", "jsonc" },
+    yamlls = { "yaml", "yaml.docker-compose" },
+    dockerls = { "dockerfile" },
   },
 }
