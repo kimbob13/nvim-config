@@ -84,16 +84,19 @@ require("lazy").setup("plugins", opts)
 vim.cmd [[colorscheme tokyonight]]
 
 -----------------------------------------------------------
----- lua specific indentation                             |
+---- 2 space indentation                             |
 -----------------------------------------------------------
+local space2_fts = { "lua", "javascript", "typescript" }
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*" },
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
-    if ft == "lua" then
-      set.tabstop = 2
-      set.softtabstop = 2
-      set.shiftwidth = 2
+    for _, space2_ft in pairs(space2_fts) do
+      if ft == space2_ft then
+        set.tabstop = 2
+        set.softtabstop = 2
+        set.shiftwidth = 2
+      end
     end
   end
 })
