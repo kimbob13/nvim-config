@@ -36,6 +36,12 @@ return {
           key = "f",
         },
         {
+          desc = " Session",
+          group = "Label",
+          action = "SessionManager load_session",
+          key = "s",
+        },
+        {
           desc = " Check Update",
           group = "Number",
           action = "Lazy check",
@@ -48,7 +54,7 @@ return {
           key = "r"
         },
         {
-          desc = " Profile",
+          desc = " Profile",
           group = "DiagnosticHint",
           action = "Lazy profile",
           key = "p",
