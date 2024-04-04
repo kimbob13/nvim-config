@@ -6,11 +6,11 @@ return {
     pylsp = { "python" },
     lua_ls = { "lua" },
     rust_analyzer = { "rust" },
+    tsserver = { "javascript", "typescript" },
+    volar = { "vue" },
   },
   optional = {
     solargraph = { "ruby" },
-    tsserver = { "javascript", "typescript" },
-    volar = { "vue" },
     jsonls = { "json", "jsonc" },
     yamlls = { "yaml", "yaml.docker-compose" },
     dockerls = { "dockerfile" },
