@@ -116,6 +116,18 @@ lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
+-- tsserver (javascript, typescript)
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- volar (vue.js)
+lspconfig.volar.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
 -- setup optional lsp server
 for _, server_name in pairs(optional_lsp) do
   lspconfig[server_name].setup {
