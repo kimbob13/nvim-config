@@ -16,4 +16,4 @@ vim.cmd([[
   call SetupCommandAlias("cs", "Cscope")
 ]])
 
-vim.keymap.set("n", "<F5>", ":Cscope build<CR>", { noremap = true, silent = true, })
+vim.keymap.set("n", "<F5>", ":Cscope db build<CR>", { noremap = true, silent = true, })
