@@ -7,9 +7,6 @@ return {
     "nvim-telescope/telescope-live-grep-args.nvim",
   },
   opts = {
-    defaults = {
-      borderchars = { "█", " ", "▀", "█", "█", " ", " ", "▀" },
-    },
     extensions = {
       live_grep_args = {
         auto_quoting = true,
