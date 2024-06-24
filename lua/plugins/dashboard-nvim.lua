@@ -38,7 +38,7 @@ return {
         {
           desc = " Session",
           group = "Label",
-          action = "SessionManager load_session",
+          action = "SessionManager load_current_dir_session",
           key = "s",
         },
         {
