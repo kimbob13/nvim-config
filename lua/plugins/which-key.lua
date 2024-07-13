@@ -8,67 +8,78 @@ return {
   config = function()
     local wk = require("which-key")
     local keymaps = {
-      ["<leader>"] = {
-        -- telescope
-        f = {
-          name = "+telescope-basic",
-          f = { ":Telescope find_files<CR>", "Find files" },
-          g = { ":Telescope grep_string<CR>", "Grep string" },
-          b = { ":Telescope buffers<CR>", "Find buffers" },
-          h = { ":Telescope help_tags<CR>", "Help tags" },
+      {
+        mode = { "n" },
+        { "<leader>f", group = "telescope" },
+
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+        { "<leader>fg", "<cmd>Telescope grep_string<cr>", desc = "Grep String" },
+        { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
+      },
+      {
+        mode = { "n" },
+        { "<leader>g", group = "git" },
+
+        { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Git Commits" },
+        { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Git Branches" },
+        { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+        { "<leader>gt", "<cmd>Telescope git_stash<cr>", desc = "Git Stash" },
+        {
+          "<leader>gd",
+          "<cmd>Telescope git_bcommits<cr>",
+          desc = "Git Bcommits (current buffer commit diff)"
         },
-        g = {
-          name = "+telescope-git",
-          c = { ":Telescope git_commits<CR>", "Git commits" },
-          b = { ":Telescope git_branches<CR>", "Git branches" },
-          s = { ":Telescope git_status<CR>", "Git status" },
-          t = { ":Telescope git_stash<CR>", "Git stash" },
-          d = { ":Telescope git_bcommits<CR>", "Git bcommits (current buffer commit diff)" },
+        { "<leader>gl", "<cmd>GitBlameToggle<cr>", desc = "Git Blame" },
+      },
+      {
+        mode = { "n" },
+        { "<leader>l", group = "lsp" },
 
-          -- git-blame
-          l = { ":GitBlameToggle<CR>", "Git blame" },
-        },
-
-        l = {
-          name = "+telescope-lsp",
-          r = { ":Telescope lsp_references<CR>", "LSP references" },
-          i = { ":Telescope lsp_incoming_calls<CR>", "LSP incoming calls" },
-          o = { ":Telescope lsp_outgoing_calls<CR>", "LSP outgoing calls" },
-          s = { ":Telescope lsp_document_symbols<CR>", "LSP document symbols" },
-          d = { ":Telescope diagnostics<CR>", "LSP diagnostics" },
-
-        },
-
+        { "<leader>lr", "<cmd>Telescope lsp_references<cr>", desc = "LSP References" },
+        { "<leader>li", "<cmd>Telescope lsp_incoming_calls<cr>", desc = "LSP Incoming Calls" },
+        { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "LSP Outgoing Calls" },
+        { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Document Symbols" },
+        { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "LSP Diagnostics" },
+      },
+      {
         -- leap.nvim
-        s = { "<Plug>(leap-forward-to)", "leap.nvim: forward search" },
-        S = { "<Plug>(leap-backward-to)", "leap.nvim: backward search" },
-
-        -- session-manager
-        m = {
-          name = "+session-manager",
-          l = { ":SessionManager load_session<CR>", "Load Session" },
-          t = { ":SessionManager load_last_session<CR>", "Load Last Session" },
-          s = { ":SessionManager save_current_session<CR>", "Save Current Session" },
-        }
+        mode = { "n" },
+        { "<leader>s", "<Plug>(leap-forward-to)", desc = "leap.nvim: forward search" },
+        { "<leader>S", "<Plug>(leap-backward-to)", desc = "leap.nvim: backward search" },
       },
-      ["<leader>/"] = { ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>",
-        "Telescope: Live grep" },
+      {
+        mode = { "n" },
+        { "<leader>m", group = "session manager" },
 
-      -- ctags
-      ["<leader>]"] = { ':vsp <CR>:exec("tag ".expand("<cword>"))<CR>', "Ctags vertical split" },
-
-      -- buffer
-      ["<leader>b"] = {
-        name = "+bufferline",
-        d = { ":bp|bd #<CR>", "Close buffer" },
+        { "<leader>ml", "<cmd>SessionManager load_session<cr>", desc = "Load Session" },
+        { "<leader>mt", "<cmd>SessionManager load_last_session<cr>", desc = "Load Last Session" },
+        { "<leader>ms", "<cmd>SessionManager save_current_session<cr>", desc = "Save Current Session" },
       },
-      ["<C-h>"] = { ":bprevious<CR>", "Go to left buffer" },
-      ["<C-l>"] = { ":bnext<CR>", "Go to right buffer" },
-
-      -- outline.nvim
-      ["<F8>"] = { ":Outline<CR>", "Outline.nvim", noremap = true },
+      {
+        -- telescope live grep
+        "<leader>/",
+        "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",
+        desc = "Live Grep",
+        mode = { "n" },
+      },
+      {
+        -- ctags
+        "<leader>]",
+        ':vsp <CR>:exec("tag ".expand("<cword>"))<CR>',
+        desc = "Ctags Vertical Split",
+        mode = { "n" },
+      },
+      {
+        -- buffer
+        mode = { "n" },
+        { "<leader>bd", "<cmd>bp|bd #<cr>", desc = "Close Buffer" },
+        { "<C-h>", "<cmd>bprevious<cr>", desc = "Go to Left Buffer" },
+        { "<C-l>", "<cmd>bnext<cr>", desc = "Go to Right Buffer" },
+      },
+      { "<F8>", "<cmd>Outline<cr>", desc = "Outline.nvim", mode = { "n" }, noremap = true },
     }
 
-    wk.register(keymaps)
+    wk.add(keymaps)
   end,
 }
