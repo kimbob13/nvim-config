@@ -6,7 +6,7 @@ return {
     pylsp = { "python" },
     lua_ls = { "lua" },
     rust_analyzer = { "rust" },
-    tsserver = { "javascript", "typescript" },
+    ts_ls = { "javascript", "typescript" },
     volar = { "vue" },
   },
   optional = {

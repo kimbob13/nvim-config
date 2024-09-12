@@ -119,8 +119,8 @@ lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
--- tsserver (javascript, typescript)
-lspconfig.tsserver.setup {
+-- ts_ls (javascript, typescript)
+lspconfig.ts_ls.setup {
   capabilities = capabilities,
   on_attach = on_attach,
 }
