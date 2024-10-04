@@ -45,7 +45,7 @@ vim.api.nvim_create_autocmd("FocusGained", {
 ---- lazy.nvim                                            |
 -----------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -105,7 +105,7 @@ vim.api.nvim_create_autocmd("FileType", {
 ---- neovide specific config                              |
 -----------------------------------------------------------
 local font_size = "12"
-if vim.loop.os_uname().sysname == "Darwin" then
+if vim.uv.os_uname().sysname == "Darwin" then
   font_size = "14"
 end
 
