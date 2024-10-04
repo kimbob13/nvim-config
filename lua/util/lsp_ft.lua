@@ -10,6 +10,7 @@ return {
     volar = { "vue" },
   },
   optional = {
+    eslint = { "javascript", "typescript" },
     solargraph = { "ruby" },
     jsonls = { "json", "jsonc" },
     yamlls = { "yaml", "yaml.docker-compose" },
