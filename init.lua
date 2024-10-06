@@ -84,7 +84,7 @@ require("lazy").setup("plugins", opts)
 vim.cmd [[colorscheme tokyonight]]
 
 -----------------------------------------------------------
----- 2 space indentation                             |
+---- 2 space indentation                                  |
 -----------------------------------------------------------
 local space2_fts = { "lua", "javascript", "typescript" }
 vim.api.nvim_create_autocmd("FileType", {
@@ -100,6 +100,11 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end
 })
+
+-----------------------------------------------------------
+---- formatter                                            |
+-----------------------------------------------------------
+require("config.formatter")
 
 -----------------------------------------------------------
 ---- neovide specific config                              |
