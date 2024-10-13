@@ -1,9 +1,9 @@
 local lsp_ft = require("util.lsp_ft")
-local enabled_ft = vim.tbl_flatten(
+local enabled_ft = vim.iter(
   vim.tbl_values(
     vim.tbl_deep_extend("error", lsp_ft.required, lsp_ft.optional)
   )
-)
+):flatten():totable()
 
 local mason = {
   "williamboman/mason.nvim",

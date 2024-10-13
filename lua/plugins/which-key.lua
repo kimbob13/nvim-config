@@ -41,6 +41,19 @@ return {
         { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "LSP Outgoing Calls" },
         { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Document Symbols" },
         { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "LSP Diagnostics" },
+
+        {
+          "<leader>lh",
+          function()
+            local clients = vim.lsp.get_clients()
+            for _, client in pairs(clients) do
+              if client.server_capabilities.inlayHintProvider then
+                vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({0}), {0})
+              end
+            end
+          end,
+          desc = "Toggle Inlay Hints"
+        },
       },
       {
         -- leap.nvim

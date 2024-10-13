@@ -25,9 +25,6 @@ local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
     navic.attach(client, bufnr)
   end
-  if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr, })
-  end
 end
 
 -----------------------------------------------------------
@@ -158,7 +155,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(ev)
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client.server_capabilities.signatureHelpProvider then
+    if client ~= nil and client.server_capabilities.signatureHelpProvider then
       client.server_capabilities.signatureHelpProvider.triggerCharacters = {}
     end
 
