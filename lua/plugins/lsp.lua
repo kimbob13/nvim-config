@@ -7,12 +7,14 @@ local enabled_ft = vim.iter(
 
 local mason = {
   "williamboman/mason.nvim",
-  dependencies = { "williamboman/mason-lspconfig.nvim" },
-  ft = enabled_ft,
+  config = function()
+    require("mason").setup()
+  end,
 }
 
-local nvim_lspconfig = {
+local lspconfig = {
   "neovim/nvim-lspconfig",
+  dependencies = { "williamboman/mason-lspconfig.nvim" },
   ft = enabled_ft,
 }
 
@@ -47,7 +49,7 @@ local outline_nvim = {
 
 return {
   mason,
-  nvim_lspconfig,
+  lspconfig,
   cmp_nvim_lsp,
   barbecue,
   outline_nvim,

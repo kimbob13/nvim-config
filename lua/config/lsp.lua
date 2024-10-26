@@ -32,7 +32,6 @@ end
 -----------------------------------------------------------
 local optional_lsp = vim.tbl_keys(require("util.lsp_ft").optional)
 
-require("mason").setup()
 require("mason-lspconfig").setup({
   automatic_installation = {
     exclude = optional_lsp,
