@@ -56,11 +56,18 @@ return {
     options = {
       theme = "tokyonight",
       globalstatus = true,
+      component_separators = '',
+      section_separators = { left = "", right = "" },
     },
     sections = {
+      lualine_a = { { 'mode', separator = { left = "", right = "" }, right_padding = 2 } },
       lualine_c = { { "filename", path = 1 } },
-      lualine_y = { line_numbers, "searchcount" },
-      lualine_z = { trailing_whitespaces, mixed_indent },
+      lualine_x = { trailing_whitespaces, mixed_indent },
+      lualine_y = { 'encoding', 'fileformat', 'filetype' },
+      lualine_z = {
+        "searchcount",
+        { line_numbers, separator = { left = "", right = "" }, right_padding = 2 },
+      },
     },
   }
 }
