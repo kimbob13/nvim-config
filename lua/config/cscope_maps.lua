@@ -2,7 +2,7 @@ require("cscope_maps").setup({
   cscope = {
     picker = "telescope",
     skip_picker_for_single_result = true,
-    db_build_cmd_args = { "-bqkR" },
+    db_build_cmd = { args = { "-bqkR" } },
   },
 })
 
