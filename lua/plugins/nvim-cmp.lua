@@ -1,4 +1,8 @@
 local function has_words_before()
+  if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" then
+    return false
+  end
+
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -46,8 +50,8 @@ local nvim_cmp = {
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
+          if cmp.visible() and has_words_before() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           elseif snippy.can_expand_or_advance() then
             snippy.expand_or_advance()
           elseif has_words_before() then
@@ -74,6 +78,7 @@ local nvim_cmp = {
         ["<CR>"] = cmp.mapping.confirm({ select = true }),         -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
       }),
       sources = cmp.config.sources({
+          { name = "copilot", group_index = 2 },
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
           { name = "luasnip" },
@@ -83,13 +88,15 @@ local nvim_cmp = {
       formatting = {
         format = require("lspkind").cmp_format({
           mode = "symbol_text",
+          max_width = 50,
           menu = ({
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
             nvim_lua = "[Lua]",
             latex_symbolx = "[Latex]",
-          })
+          }),
+          symbol_map = { Copilot = "" },
         }),
       },
     })
