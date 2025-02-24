@@ -115,16 +115,12 @@ if vim.uv.os_uname().sysname == "Darwin" then
 end
 
 vim.o.guifont = "CaskaydiaCove Nerd Font Mono:h" .. font_size
-vim.api.nvim_set_keymap("", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("!", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<S-Insert>", "<C-R>+", { noremap = true, silent = true })
+
+-- copy paste with shift-insert
+vim.api.nvim_set_keymap('i', '<S-Insert>', '<C-r><C-o>+', { noremap = true, silent = true})
 
 -- copy paste on macOS
-vim.api.nvim_set_keymap('', '<D-v>', '+p<CR>', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('!', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('t', '<D-v>', '<C-R>+', { noremap = true, silent = true})
-vim.api.nvim_set_keymap('v', '<D-v>', '<C-R>+', { noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', '<D-v>', '<C-r><C-o>+', { noremap = true, silent = true})
 
 if vim.g.neovide then
   vim.g.neovide_scale_factor = 1.0
