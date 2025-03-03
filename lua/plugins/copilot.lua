@@ -2,7 +2,7 @@ local copilot = {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   build = ":Copilot auth",
-  event = "BufReadPost",
+  event = "InsertEnter",
   config = function ()
     require("copilot").setup({
       suggestion = { enabled = false },
@@ -13,13 +13,9 @@ local copilot = {
 
 local copilot_cmp = {
   "zbirenbaum/copilot-cmp",
-  event = "BufReadPost",
   config = function ()
     require("copilot_cmp").setup()
   end,
 }
 
-return {
-  copilot,
-  copilot_cmp,
-}
+return { copilot, copilot_cmp }
