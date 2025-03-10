@@ -12,7 +12,8 @@ set.smartindent = true
 
 set.mouse = "a"
 set.inccommand = ""
-set.completeopt = { "menu", "menuone", "noselect" }
+-- popup comes from copilot-chat
+set.completeopt = { "menu", "menuone", "noselect", "popup" }
 set.fileformats = { "unix", "dos" }
 
 set.number = true
