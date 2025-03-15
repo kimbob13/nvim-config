@@ -1,5 +1,5 @@
 -----------------------------------------------------------
----- barbecue and nvim-navic                              |
+---- barbecue and nvim-navic     |
 -----------------------------------------------------------
 vim.opt.updatetime = 200
 
@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
 end
 
 -----------------------------------------------------------
----- lsp config                                           |
+---- lsp config                  |
 -----------------------------------------------------------
 local optional_lsp = vim.tbl_keys(require("util.lsp_ft").optional)
 
@@ -48,7 +48,7 @@ lspconfig.clangd.setup {
   cmd = {
     "clangd",
     "--header-insertion=never",
-    "--offset-encoding=utf-8",
+    "--offset-encoding=utf-16",
   },
   capabilities = capabilities,
   on_attach = on_attach,
@@ -140,7 +140,7 @@ for _, server_name in pairs(optional_lsp) do
 end
 
 -----------------------------------------------------------
----- lsp config keymap                                    |
+---- lsp config keymap           |
 -----------------------------------------------------------
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
