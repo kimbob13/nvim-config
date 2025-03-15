@@ -50,8 +50,8 @@ local nvim_cmp = {
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() and has_words_before() then
-            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+          if cmp.visible() then
+            cmp.select_next_item()
           elseif snippy.can_expand_or_advance() then
             snippy.expand_or_advance()
           elseif has_words_before() then
@@ -73,6 +73,8 @@ local nvim_cmp = {
 
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.abort(),
         ["<CR>"] = cmp.mapping.confirm({ select = true }),         -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -80,7 +82,7 @@ local nvim_cmp = {
       sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lua" },
-          { name = "luasnip" },
+          { name = "snippy" },
           { name = "copilot" },
         }, {
           { name = "buffer" },
@@ -111,7 +113,7 @@ local nvim_cmp = {
           menu = ({
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
-            luasnip = "[LuaSnip]",
+            snippy = "[Snippy]",
             nvim_lua = "[Lua]",
             latex_symbolx = "[Latex]",
           }),
