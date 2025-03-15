@@ -2,7 +2,7 @@ local copilot = {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   build = ":Copilot auth",
-  event = "InsertEnter",
+  event = "BufReadPost",
   config = function ()
     require("copilot").setup({
       suggestion = { enabled = false },
@@ -25,7 +25,7 @@ local copilot_chat = {
     { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
   },
   build = "make tiktoken", -- Only on MacOS or Linux
-  event = "InsertEnter",
+  event = "BufReadPost",
   opts = {
     -- See Configuration section for options
   },
