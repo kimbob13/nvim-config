@@ -48,6 +48,7 @@ lspconfig.clangd.setup {
   cmd = {
     "clangd",
     "--header-insertion=never",
+    "--offset-encoding=utf-8",
   },
   capabilities = capabilities,
   on_attach = on_attach,
