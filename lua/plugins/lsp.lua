@@ -1,7 +1,7 @@
 local lsp_ft = require("util.lsp_ft")
 local enabled_ft = vim.iter(
   vim.tbl_values(
-    vim.tbl_deep_extend("error", lsp_ft.required, lsp_ft.optional)
+    vim.tbl_deep_extend("error", lsp_ft.custom_opt, lsp_ft.default_opt)
   )
 ):flatten():totable()
 
@@ -14,7 +14,6 @@ local mason = {
 
 local lspconfig = {
   "neovim/nvim-lspconfig",
-  dependencies = { "williamboman/mason-lspconfig.nvim" },
   ft = enabled_ft,
 }
 

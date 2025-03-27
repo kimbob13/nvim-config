@@ -30,14 +30,7 @@ end
 -----------------------------------------------------------
 ---- lsp config                  |
 -----------------------------------------------------------
-local optional_lsp = vim.tbl_keys(require("util.lsp_ft").optional)
-
-require("mason-lspconfig").setup({
-  automatic_installation = {
-    exclude = optional_lsp,
-  },
-})
-
+local lsp_with_default_opt = vim.tbl_keys(require("util.lsp_ft").default_opt)
 local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -119,20 +112,8 @@ lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
--- ts_ls (javascript, typescript)
-lspconfig.ts_ls.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
--- volar (vue.js)
-lspconfig.volar.setup {
-  capabilities = capabilities,
-  on_attach = on_attach,
-}
-
 -- setup optional lsp server
-for _, server_name in pairs(optional_lsp) do
+for _, server_name in pairs(lsp_with_default_opt) do
   lspconfig[server_name].setup {
     capabilities = capabilities,
     on_attach = on_attach,
@@ -145,8 +126,20 @@ end
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+vim.keymap.set(
+  "n",
+  "]d", -- goto previous diagnostic
+  function()
+    vim.diagnostic.jump({ count = -1, float = true })
+  end
+)
+vim.keymap.set(
+  "n",
+  "]d", -- goto next diagnostic
+  function()
+    vim.diagnostic.jump({ count = 1, float = true })
+  end
+)
 vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
@@ -184,3 +177,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, opts)
   end,
 })
+
+-- lsp diagnostic config
+vim.diagnostic.config({ virtual_lines = { current_line = true } })
