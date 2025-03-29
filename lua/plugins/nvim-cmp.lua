@@ -5,7 +5,14 @@ local function has_words_before()
 
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
+
+  -- Get the text before cursor and check if it contains non-space characters
+  if col == 0 then
+    return false
+  end
+
+  local line_text = vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
+  return line_text:match("%S") ~= nil
 end
 
 local cmp_nvim_lua = {
