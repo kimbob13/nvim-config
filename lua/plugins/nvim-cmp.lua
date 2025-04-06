@@ -15,24 +15,14 @@ local function has_words_before()
   return line_text:match("%S") ~= nil
 end
 
-local cmp_nvim_lua = {
-  "hrsh7th/cmp-nvim-lua",
-  event = "BufReadPost",
-  dependencies = { "hrsh7th/nvim-cmp" },
-}
-
-local cmp_buffer = {
-  "hrsh7th/cmp-buffer",
-  event = "BufReadPost",
-  dependencies = { "hrsh7th/nvim-cmp" },
-}
-
-local nvim_cmp = {
+return {
   "hrsh7th/nvim-cmp",
   event  = "VeryLazy",
   dependencies = {
     "hrsh7th/cmp-path",
+    "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-cmdline",
+    "hrsh7th/cmp-nvim-lua",
 
     -- snippets
     "dcampos/nvim-snippy",
@@ -110,7 +100,6 @@ local nvim_cmp = {
           cmp.config.compare.order,
 
           require("copilot_cmp.comparators").prioritize,
-
         },
       },
       formatting = {
@@ -157,5 +146,3 @@ local nvim_cmp = {
     )
   end,
 }
-
-return { nvim_cmp, cmp_buffer, cmp_nvim_lua }
