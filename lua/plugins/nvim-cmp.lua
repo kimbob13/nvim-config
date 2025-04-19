@@ -5,14 +5,7 @@ local function has_words_before()
 
   unpack = unpack or table.unpack
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-
-  -- Get the text before cursor and check if it contains non-space characters
-  if col == 0 then
-    return false
-  end
-
-  local line_text = vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-  return line_text:match("%S") ~= nil
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
 end
 
 return {
@@ -47,12 +40,10 @@ return {
       },
       mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
+          if cmp.visible() and has_words_before() then
+            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
           elseif snippy.can_expand_or_advance() then
             snippy.expand_or_advance()
-          elseif has_words_before() then
-            cmp.complete()
           else
             fallback()
           end
