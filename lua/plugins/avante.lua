@@ -11,7 +11,15 @@ return {
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = "make",
+  build = function()
+    -- Check if the system is Windows
+    local is_windows = vim.uv.os_uname().sysname == "Windows_NT"
+    if is_windows then
+      return "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    else
+      return "make"
+    end
+  end,
   -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
