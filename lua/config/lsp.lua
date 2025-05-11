@@ -1,25 +1,6 @@
 -----------------------------------------------------------
----- barbecue and nvim-navic     |
+---- nvim-navic
 -----------------------------------------------------------
-vim.opt.updatetime = 200
-
-require("barbecue").setup({
-  create_autocmd = false,
-  attach_navic = false,
-})
-
-vim.api.nvim_create_autocmd({
-  "WinResized", -- or WinResized on NVIM-v0.9 and higher
-  "BufWinEnter",
-  "CursorHold",
-  "InsertLeave",
-}, {
-  group = vim.api.nvim_create_augroup("barbecue.updater", {}),
-  callback = function()
-    require("barbecue.ui").update()
-  end,
-})
-
 local navic = require("nvim-navic")
 local on_attach = function(client, bufnr)
   if client.server_capabilities.documentSymbolProvider then
@@ -28,27 +9,20 @@ local on_attach = function(client, bufnr)
 end
 
 -----------------------------------------------------------
----- lsp config                  |
+---- lsp config
 -----------------------------------------------------------
-local lsp_with_default_opt = vim.tbl_keys(require("util.lsp_ft").default_opt)
-local lspconfig = require("lspconfig")
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 vim.lsp.set_log_level("off")
 
 -- clangd
-lspconfig.clangd.setup {
-  cmd = {
-    "clangd",
-    "--header-insertion=never",
-    "--offset-encoding=utf-16",
-  },
-  capabilities = capabilities,
+vim.lsp.enable("clangd")
+vim.lsp.config("clangd", {
+  cmd = { "clangd", "--header-insertion=never" },
   on_attach = on_attach,
-}
+})
 
 -- pylsp
-lspconfig.pylsp.setup {
+vim.lsp.enable("pylsp")
+vim.lsp.config("pylsp", {
   settings = {
     pylsp = {
       plugins = {
@@ -59,42 +33,45 @@ lspconfig.pylsp.setup {
             "E203", -- whitespace before :
             "E221", -- multiple spaces before operator
           },
-          maxLineLength = 100,
+          maxLineLength = 100
         }
       }
     }
   },
-  capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
 -- lua lsp
-lspconfig.lua_ls.setup {
+vim.lsp.enable("lua_ls")
+vim.lsp.config("lua_ls", {
   settings = {
     Lua = {
       runtime = {
         version = "LuaJIT",
+        path = {
+          "lua/?.lua",
+          "lua/?/init.lua",
+        },
       },
       diagnostics = {
         globals = { "vim" },
       },
       workspace = {
+        checkThirdParty = false,
         library = {
           vim.env.VIMRUNTIME,
           "${3rd}/luv/library"
+          -- "${3rd}/busted/library"
         }
-      },
-      telementry = {
-        enable = false,
       },
     },
   },
-  capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
 -- rust-analyaer
-lspconfig.rust_analyzer.setup {
+vim.lsp.enable("rust_analyzer")
+vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust-analyzer"] = {
       diagnostics = {
@@ -103,25 +80,22 @@ lspconfig.rust_analyzer.setup {
       -- cargo = {
       --   target = "riscv32i-unknown-none-elf",
       -- },
-      checkOnSave = {
-        allTargets = false,
-      },
+      -- checkOnSave = {
+      --   allTargets = false,
+      -- },
     },
   },
-  capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
 -- setup optional lsp server
+local lsp_with_default_opt = vim.tbl_keys(require("util.lsp_ft").default_opt)
 for _, server_name in pairs(lsp_with_default_opt) do
-  lspconfig[server_name].setup {
-    capabilities = capabilities,
-    on_attach = on_attach,
-  }
+  vim.lsp.enable(server_name)
 end
 
 -----------------------------------------------------------
----- lsp config keymap           |
+---- lsp config keymap
 -----------------------------------------------------------
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

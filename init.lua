@@ -1,5 +1,5 @@
 -----------------------------------------------------------
----- set options                                          |
+---- set options
 -----------------------------------------------------------
 local set = vim.opt
 
@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("FocusGained", {
 })
 
 -----------------------------------------------------------
----- lazy.nvim                                            |
+---- lazy.nvim
 -----------------------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -85,7 +85,7 @@ require("lazy").setup("plugins", opts)
 vim.cmd [[colorscheme tokyonight]]
 
 -----------------------------------------------------------
----- 2 space indentation                                  |
+---- 2 space indentation
 -----------------------------------------------------------
 local space2_fts = { "lua", "javascript", "typescript" }
 vim.api.nvim_create_autocmd("FileType", {
@@ -103,12 +103,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -----------------------------------------------------------
----- formatter                                            |
------------------------------------------------------------
-require("config.formatter")
-
------------------------------------------------------------
----- neovide specific config                              |
+---- neovide specific config
 -----------------------------------------------------------
 local font_size = "12"
 if vim.uv.os_uname().sysname == "Darwin" then

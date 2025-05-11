@@ -1,15 +1,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
-  keys = {
-    {
-      "<C-n>",
-      "<CMD>Neotree toggle=true<CR>",
-      mode = "n",
-      noremap = true,
-      desc = "Neo Tree"
-    },
-  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
@@ -18,8 +9,10 @@ return {
   opts = {
     sources = { "filesystem", "buffers", "git_status" },
     filesystem = {
-      bind_to_cwd = false,
-      follow_current_file = { enabled = true },
+      follow_current_file = {
+        enabled = true,
+        leave_dirs_open = true,
+      },
       use_libuv_file_watcher = true,
     },
     close_if_last_window = false,

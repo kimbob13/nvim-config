@@ -1,4 +1,4 @@
-local copilot = {
+return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "BufReadPost",
@@ -9,12 +9,3 @@ local copilot = {
     })
   end,
 }
-
-local copilot_cmp = {
-  "zbirenbaum/copilot-cmp",
-  config = function ()
-    require("copilot_cmp").setup()
-  end,
-}
-
-return { copilot, copilot_cmp }

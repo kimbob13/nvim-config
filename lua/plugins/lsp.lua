@@ -14,42 +14,24 @@ local mason = {
 
 local lspconfig = {
   "neovim/nvim-lspconfig",
-  ft = enabled_ft,
-}
-
-local barbecue = {
-  "utilyre/barbecue.nvim",
-  name = "barbecue",
-  ft = enabled_ft,
-  version = "*",
   dependencies = {
-    "SmiteshP/nvim-navic",
-    "nvim-tree/nvim-web-devicons",
+    {
+      "hasansujon786/nvim-navbuddy",
+      dependencies = {
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim",
+      },
+      opts = { lsp = { auto_attach = true } },
+    },
   },
-  opts = {},
-}
-
-local cmp_nvim_lsp = {
-  "hrsh7th/cmp-nvim-lsp",
   ft = enabled_ft,
-  dependencies = { "hrsh7th/nvim-cmp" },
   config = function()
     require("config.lsp")
-  end,
-}
-
-local outline_nvim = {
-  "hedyhli/outline.nvim",
-  ft = enabled_ft,
-  config = function()
-    require("outline").setup()
+    require("config.formatter")
   end,
 }
 
 return {
   mason,
   lspconfig,
-  cmp_nvim_lsp,
-  barbecue,
-  outline_nvim,
 }

@@ -49,6 +49,8 @@ local function line_numbers()
   return progress_str .. "\u{e0a1}:" .. row .. "/" .. total_lines .. "\u{2630} " .. "\u{e0a3}:" .. col
 end
 
+local navic = require("nvim-navic")
+
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
@@ -56,11 +58,17 @@ return {
     options = {
       theme = "tokyonight",
       globalstatus = true,
-      component_separators = '',
       section_separators = { left = "", right = "" },
+      component_separators = { left = '', right = '' },
     },
     sections = {
-      lualine_a = { { 'mode', separator = { left = "", right = "" }, right_padding = 2 } },
+      lualine_a = {
+        {
+          "mode",
+          separator = { left = "", right = "" },
+          right_padding = 2
+        }
+      },
       lualine_c = { { "filename", path = 1 } },
       lualine_x = { trailing_whitespaces, mixed_indent },
       lualine_y = { 'encoding', 'fileformat', 'filetype' },
@@ -68,6 +76,23 @@ return {
         "searchcount",
         { line_numbers, separator = { left = "", right = "" }, right_padding = 2 },
       },
+    },
+    winbar = {
+      lualine_b = {
+        {
+          function()
+            return navic.get_location()
+          end,
+          cond = function()
+            return navic.is_available()
+          end,
+        },
+      },
+      lualine_a = {},
+      lualine_c = { { "filename", path = 3 } },
+      lualine_x = {},
+      lualine_y = {},
+      lualine_z = {},
     },
   }
 }

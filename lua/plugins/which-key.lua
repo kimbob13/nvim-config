@@ -17,6 +17,15 @@ return {
         { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find Buffers" },
         { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
       },
+
+      -- telescope live grep
+      {
+        "<leader>/",
+        "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",
+        desc = "Live Grep",
+        mode = { "n" },
+      },
+
       {
         mode = { "n" },
         { "<leader>g", group = "git" },
@@ -32,6 +41,7 @@ return {
         },
         { "<leader>gl", "<cmd>GitBlameToggle<cr>", desc = "Git Blame" },
       },
+
       {
         mode = { "n" },
         { "<leader>l", group = "lsp" },
@@ -55,12 +65,10 @@ return {
           desc = "Toggle Inlay Hints"
         },
       },
-      {
-        -- leap.nvim
-        mode = { "n" },
-        { "<leader>s", "<Plug>(leap-forward-to)", desc = "leap.nvim: forward search" },
-        { "<leader>S", "<Plug>(leap-backward-to)", desc = "leap.nvim: backward search" },
-      },
+
+      -- navbuddy
+      { "<F8>", "<cmd>Navbuddy<cr>", mode = { "n" }, noremap = true, desc = "Navbuddy" },
+
       {
         mode = { "n" },
         { "<leader>m", group = "session manager" },
@@ -69,28 +77,37 @@ return {
         { "<leader>mt", "<cmd>SessionManager load_last_session<cr>", desc = "Load Last Session" },
         { "<leader>ms", "<cmd>SessionManager save_current_session<cr>", desc = "Save Current Session" },
       },
+
+      -- leap.nvim
       {
-        -- telescope live grep
-        "<leader>/",
-        "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>",
-        desc = "Live Grep",
         mode = { "n" },
+        { "<leader>s", "<Plug>(leap-forward-to)", desc = "leap.nvim: forward search" },
+        { "<leader>S", "<Plug>(leap-backward-to)", desc = "leap.nvim: backward search" },
       },
+
+      -- neo-tree
       {
-        -- ctags
-        "<leader>]",
-        ':vsp <CR>:exec("tag ".expand("<cword>"))<CR>',
-        desc = "Ctags Vertical Split",
+        "<C-n>", "<cmd>Neotree toggle=true<CR>",
         mode = { "n" },
+        noremap = true,
+        desc = "Neo Tree",
       },
+
+      -- buffer
       {
-        -- buffer
         mode = { "n" },
         { "<leader>bd", "<cmd>bp|bd #<cr>", desc = "Close Buffer" },
         { "<C-h>", "<cmd>bprevious<cr>", desc = "Go to Left Buffer" },
         { "<C-l>", "<cmd>bnext<cr>", desc = "Go to Right Buffer" },
       },
-      { "<F8>", "<cmd>Outline<cr>", desc = "Outline.nvim", mode = { "n" }, noremap = true },
+
+      -- ctags
+      {
+        "<leader>]",
+        ':vsp <CR>:exec("tag ".expand("<cword>"))<CR>',
+        mode = { "n" },
+        desc = "Ctags Vertical Split",
+      },
     }
 
     wk.add(keymaps)
