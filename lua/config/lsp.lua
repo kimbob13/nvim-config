@@ -13,85 +13,13 @@ end
 -----------------------------------------------------------
 vim.lsp.set_log_level("off")
 
--- clangd
-vim.lsp.enable("clangd")
-vim.lsp.config("clangd", {
-  cmd = { "clangd", "--header-insertion=never" },
-  on_attach = on_attach,
-})
-
--- pylsp
-vim.lsp.enable("pylsp")
-vim.lsp.config("pylsp", {
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {
-            "W391", -- blank line at end of file
-            "W503", -- line break before binary operator
-            "E203", -- whitespace before :
-            "E221", -- multiple spaces before operator
-          },
-          maxLineLength = 100
-        }
-      }
-    }
-  },
-  on_attach = on_attach,
-})
-
--- lua lsp
-vim.lsp.enable("lua_ls")
-vim.lsp.config("lua_ls", {
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-        path = {
-          "lua/?.lua",
-          "lua/?/init.lua",
-        },
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        checkThirdParty = false,
-        library = {
-          vim.env.VIMRUNTIME,
-          "${3rd}/luv/library"
-          -- "${3rd}/busted/library"
-        }
-      },
-    },
-  },
-  on_attach = on_attach,
-})
-
--- rust-analyaer
-vim.lsp.enable("rust_analyzer")
-vim.lsp.config("rust_analyzer", {
-  settings = {
-    ["rust-analyzer"] = {
-      diagnostics = {
-        enable = false,
-      },
-      -- cargo = {
-      --   target = "riscv32i-unknown-none-elf",
-      -- },
-      -- checkOnSave = {
-      --   allTargets = false,
-      -- },
-    },
-  },
-  on_attach = on_attach,
-})
-
 -- setup optional lsp server
-local lsp_with_default_opt = vim.tbl_keys(require("util.lsp_ft").default_opt)
-for _, server_name in pairs(lsp_with_default_opt) do
+local lsp_ft = require("util.lsp_ft")
+for server_name, server_config in pairs(lsp_ft) do
   vim.lsp.enable(server_name)
+
+  server_config.opts.on_attach = on_attach
+  vim.lsp.config(server_name, server_config.opts)
 end
 
 -----------------------------------------------------------

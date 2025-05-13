@@ -1,9 +1,14 @@
 local lsp_ft = require("util.lsp_ft")
-local enabled_ft = vim.iter(
-  vim.tbl_values(
-    vim.tbl_deep_extend("error", lsp_ft.custom_opt, lsp_ft.default_opt)
-  )
-):flatten():totable()
+local enabled_ft = {}
+for _, server_config in pairs(lsp_ft) do
+  if server_config.ft then
+    for _, ft in ipairs(server_config.ft) do
+      if not vim.tbl_contains(enabled_ft, ft) then
+        table.insert(enabled_ft, ft)
+      end
+    end
+  end
+end
 
 local mason = {
   "williamboman/mason.nvim",
