@@ -11,15 +11,83 @@ end
 -----------------------------------------------------------
 ---- lsp config
 -----------------------------------------------------------
+local lsp_config = {
+  clangd = {
+    cmd = { "clangd", "--header-insertion=never" },
+  },
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            ignore = {
+              "W391", -- blank line at end of file
+              "W503", -- line break before binary operator
+              "E203", -- whitespace before :
+              "E221", -- multiple spaces before operator
+            },
+            maxLineLength = 100
+          }
+        }
+      }
+    },
+  },
+  lua_ls = {
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = {
+            "lua/?.lua",
+            "lua/?/init.lua",
+          },
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME,
+            "${3rd}/luv/library"
+            -- "${3rd}/busted/library"
+          }
+        },
+      },
+    },
+  },
+  rust_analyzer = {
+    settings = {
+      ["rust-analyzer"] = {
+        diagnostics = {
+          enable = false,
+        },
+        -- cargo = {
+        --   target = "riscv32i-unknown-none-elf",
+        -- },
+        -- checkOnSave = {
+        --   allTargets = false,
+        -- },
+      },
+    },
+  },
+  ts_ls = {},
+  volar = {},
+  eslint = {},
+  solargraph = {},
+  jsonls = {},
+  yamlls = {},
+  dockerls = {},
+}
+
+-- Turn off LSP log
 vim.lsp.set_log_level("off")
 
--- setup optional lsp server
-local lsp_ft = require("util.lsp_ft")
-for server_name, server_config in pairs(lsp_ft) do
+-- Enble LSP
+for server_name, server_opts in pairs(lsp_config) do
+  server_opts.on_attach = on_attach
+  vim.lsp.config(server_name, server_opts)
   vim.lsp.enable(server_name)
-
-  server_config.opts.on_attach = on_attach
-  vim.lsp.config(server_name, server_config.opts)
 end
 
 -----------------------------------------------------------

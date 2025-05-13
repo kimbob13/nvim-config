@@ -1,5 +1,5 @@
 {
-  "avante.nvim": { "branch": "main", "commit": "aae4cc4014149e544fb00e78687bcdef8335dd10" },
+  "avante.nvim": { "branch": "main", "commit": "d4672b7e1ee8bf94df5e1d3482e81418187f42aa" },
   "blink-copilot": { "branch": "main", "commit": "bdc45bbbed2ec252b3a29f4adecf031e157b5573" },
   "blink.cmp": { "branch": "main", "commit": "4f38ce99a472932d5776337f08f7a8180f1f571a" },
   "bufferline.nvim": { "branch": "main", "commit": "655133c3b4c3e5e05ec549b9f8cc2894ac6f51b3" },
@@ -30,7 +30,7 @@
   "nvim-surround": { "branch": "main", "commit": "0e62500b98f4513feaaf7425c135472457ea5b7d" },
   "nvim-treesitter": { "branch": "master", "commit": "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79" },
   "nvim-treesitter-context": { "branch": "master", "commit": "5c48b8ba1b0b7b25feb6e34e7eb293ea893aedc4" },
-  "nvim-treesitter-textobjects": { "branch": "master", "commit": "0e3be38005e9673d044e994b1e4b123adb040179" },
+  "nvim-treesitter-textobjects": { "branch": "master", "commit": "b0debd5c424969b4baeabdc8f54db3036c691732" },
   "nvim-web-devicons": { "branch": "master", "commit": "f1420728f59843eb2ef084406b3d0201a0a0932d" },
   "nvim_context_vt": { "branch": "master", "commit": "10e13ec47a9bb341192d893e58cf91c61cde4935" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },

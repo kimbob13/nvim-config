@@ -1,6 +1,6 @@
 return {
   "haringsrob/nvim_context_vt",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     disable_virtual_lines = true,
   },

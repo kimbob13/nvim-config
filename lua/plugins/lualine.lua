@@ -53,7 +53,7 @@ local navic = require("nvim-navic")
 
 return {
   "nvim-lualine/lualine.nvim",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   opts = {
     options = {
       theme = "tokyonight",

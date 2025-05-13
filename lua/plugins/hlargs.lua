@@ -1,6 +1,6 @@
 return {
   "m-demare/hlargs.nvim",
-  ft = { "python", "ruby" },
+  ft = { "python", "ruby", "lua" },
   config = function()
     require("hlargs").setup({
       -- color = "#fc9867", -- monokai pro

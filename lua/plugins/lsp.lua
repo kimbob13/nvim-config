@@ -1,15 +1,3 @@
-local lsp_ft = require("util.lsp_ft")
-local enabled_ft = {}
-for _, server_config in pairs(lsp_ft) do
-  if server_config.ft then
-    for _, ft in ipairs(server_config.ft) do
-      if not vim.tbl_contains(enabled_ft, ft) then
-        table.insert(enabled_ft, ft)
-      end
-    end
-  end
-end
-
 local mason = {
   "williamboman/mason.nvim",
   config = function()
@@ -19,6 +7,7 @@ local mason = {
 
 local lspconfig = {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPost", "BufNewFile" },
   dependencies = {
     {
       "hasansujon786/nvim-navbuddy",
@@ -29,7 +18,6 @@ local lspconfig = {
       opts = { lsp = { auto_attach = true } },
     },
   },
-  ft = enabled_ft,
   config = function()
     require("config.lsp")
     require("config.formatter")

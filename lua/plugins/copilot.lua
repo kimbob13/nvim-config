@@ -1,7 +1,7 @@
 return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   config = function ()
     require("copilot").setup({
       suggestion = { enabled = false },

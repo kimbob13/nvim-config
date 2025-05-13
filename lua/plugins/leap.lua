@@ -1,7 +1,7 @@
 return {
   "ggandor/leap.nvim",
   dependencies = { "tpope/vim-repeat", keys = { "." } },
-  event = "BufReadPost",
+  event = { "BufReadPost", "BufNewFile" },
   config = function()
     require("leap").set_default_keymaps()
     vim.keymap.del({ "n", "v" }, "s")

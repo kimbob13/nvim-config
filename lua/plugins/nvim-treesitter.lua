@@ -120,7 +120,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "BufReadPost",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
       enable = true,
     },
