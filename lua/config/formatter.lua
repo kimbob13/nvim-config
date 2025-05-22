@@ -1,41 +1,35 @@
 local autocmd_group = vim.api.nvim_create_augroup("Formatter auto-commands", { clear = true })
+local formatter_config = {
+  clang_format = {
+    pattern = { "*.c", "*.h", "*.cc", "*.cpp", "*.hpp" },
+    desc = "Auto format C/C++ files after saving",
+    cmd = "clang-format -i",
+  },
+  black = {
+    pattern = { "*.py" },
+    desc = "Auto format Python files after saving",
+    cmd = "black",
+  },
+  prettier = {
+    pattern = { "*.js", "*.ts", "*.json" },
+    desc = "Auto format JS/TS files after saving",
+    cmd = "prettier --write",
+  },
+  rustfmt = {
+    pattern = { "*.rs" },
+    desc = "Auto format Rust files after saving",
+    cmd = "rustfmt",
+  },
+}
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.c", "*.h", "*.cc", "*.cpp", "*.hpp" },
-  desc = "Auto format C/C++ files after saving",
-  callback = function()
-    local file_name = vim.api.nvim_buf_get_name(0)
-    vim.cmd(":silent !clang-format -i " .. file_name)
-  end,
-  group = autocmd_group,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.py" },
-  desc = "Auto format Python files after saving",
-  callback = function()
-    local file_name = vim.api.nvim_buf_get_name(0)
-    vim.cmd(":silent !black " .. file_name)
-  end,
-  group = autocmd_group,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.js", "*.ts", "*.json" },
-  desc = "Auto format JS/TS files after saving",
-  callback = function()
-    local file_name = vim.api.nvim_buf_get_name(0)
-    vim.cmd(":silent !prettier --write " .. file_name)
-  end,
-  group = autocmd_group,
-})
-
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.rs" },
-  desc = "Auto format Rust files after saving",
-  callback = function()
-    local file_name = vim.api.nvim_buf_get_name(0)
-    vim.cmd(":silent !rustfmt " .. file_name)
-  end,
-  group = autocmd_group,
-})
+for _, opts in pairs(formatter_config) do
+  vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+    pattern = opts.pattern,
+    desc = opts.desc,
+    callback = function()
+      local file_name = vim.api.nvim_buf_get_name(0)
+      vim.cmd(":silent !" .. opts.cmd .. " " .. file_name)
+    end,
+    group = autocmd_group,
+  })
+end
