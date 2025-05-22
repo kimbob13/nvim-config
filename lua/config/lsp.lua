@@ -72,7 +72,7 @@ local lsp_config = {
     },
   },
   ts_ls = {},
-  volar = {},
+  vue_ls = {},
   eslint = {},
   solargraph = {},
   jsonls = {},
