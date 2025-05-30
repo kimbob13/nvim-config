@@ -51,6 +51,14 @@ return {
         { "<leader>lo", "<cmd>Telescope lsp_outgoing_calls<cr>", desc = "LSP Outgoing Calls" },
         { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "LSP Document Symbols" },
         { "<leader>ld", "<cmd>Telescope diagnostics<cr>", desc = "LSP Diagnostics" },
+        {
+          "<leader>lf",
+          function()
+            vim.lsp.stop_client(vim.lsp.get_clients())
+            vim.cmd("edit")
+          end,
+          desc = "LSP Server Force Restart",
+        },
 
         {
           "<leader>lh",
