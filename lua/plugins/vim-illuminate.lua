@@ -1,6 +1,8 @@
+require("util").lazy_file()
+
 return {
   "RRethy/vim-illuminate",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   opts = {
     providers = {
       "lsp",

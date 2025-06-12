@@ -1,8 +1,10 @@
+require("util").lazy_file()
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "VeryLazy",
+    event = { "LazyFile", "VeryLazy" },
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = {
       -- A list of parser names, or "all"
@@ -120,7 +122,7 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     opts = {
       enable = true,
     },

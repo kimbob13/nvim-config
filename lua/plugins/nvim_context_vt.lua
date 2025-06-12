@@ -1,6 +1,8 @@
+require("util").lazy_file()
+
 return {
   "haringsrob/nvim_context_vt",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   opts = {
     disable_virtual_lines = true,
   },

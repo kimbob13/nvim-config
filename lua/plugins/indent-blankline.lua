@@ -1,6 +1,8 @@
+require("util").lazy_file()
+
 return {
   "lukas-reineke/indent-blankline.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   main = "ibl",
   config = function()
     require("config.indent-blankline")

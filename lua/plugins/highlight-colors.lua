@@ -1,6 +1,8 @@
+require("util").lazy_file()
+
 return {
   "brenoprata10/nvim-highlight-colors",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   enable = false,
   config = function()
     require("nvim-highlight-colors").setup()

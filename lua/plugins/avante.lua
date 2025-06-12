@@ -1,6 +1,8 @@
+require("util").lazy_file()
+
 return {
   "yetone/avante.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   version = false, -- Never set this value to "*"! Never!
   opts = {
     -- add any opts here

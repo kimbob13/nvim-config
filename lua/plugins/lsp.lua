@@ -1,3 +1,5 @@
+require("util").lazy_file()
+
 local mason = {
   "williamboman/mason.nvim",
   config = function()
@@ -7,7 +9,7 @@ local mason = {
 
 local lspconfig = {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   dependencies = {
     {
       "hasansujon786/nvim-navbuddy",

@@ -50,10 +50,11 @@ local function line_numbers()
 end
 
 local navic = require("nvim-navic")
+require("util").lazy_file()
 
 return {
   "nvim-lualine/lualine.nvim",
-  event = { "BufReadPost", "BufNewFile" },
+  event = "LazyFile",
   opts = {
     options = {
       theme = "tokyonight",

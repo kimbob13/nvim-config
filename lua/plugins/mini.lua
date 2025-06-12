@@ -1,8 +1,10 @@
+require("util").lazy_file()
+
 return {
   {
     "echasnovski/mini.indentscope",
     version = false,
-    event = { "BufReadPost", "BufNewFile" },
+    event = "LazyFile",
     config = function()
       require("mini.indentscope").setup()
     end,
