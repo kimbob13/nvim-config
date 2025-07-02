@@ -103,6 +103,19 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -----------------------------------------------------------
+---- 8 space tab for Makefiles
+-----------------------------------------------------------
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "make" },
+  callback = function()
+    set.expandtab = false
+    set.tabstop = 8
+    set.softtabstop = 8
+    set.shiftwidth = 8
+  end
+})
+
+-----------------------------------------------------------
 ---- neovide specific config
 -----------------------------------------------------------
 local font_size = "12"
