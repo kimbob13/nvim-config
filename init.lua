@@ -85,9 +85,11 @@ require("lazy").setup("plugins", opts)
 vim.cmd [[colorscheme tokyonight]]
 
 -----------------------------------------------------------
----- 2 space indentation
+---- custom indentation
 -----------------------------------------------------------
 local space2_fts = { "lua", "javascript", "typescript" }
+local tab8_fts = { "make" }
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "*" },
   callback = function(args)
@@ -99,19 +101,15 @@ vim.api.nvim_create_autocmd("FileType", {
         set.shiftwidth = 2
       end
     end
-  end
-})
 
------------------------------------------------------------
----- 8 space tab for Makefiles
------------------------------------------------------------
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "make" },
-  callback = function()
-    set.expandtab = false
-    set.tabstop = 8
-    set.softtabstop = 8
-    set.shiftwidth = 8
+    for _, tab8_ft in pairs(tab8_fts) do
+      if ft == tab8_ft then
+        set.expandtab = false
+        set.tabstop = 8
+        set.softtabstop = 8
+        set.shiftwidth = 8
+      end
+    end
   end
 })
 
