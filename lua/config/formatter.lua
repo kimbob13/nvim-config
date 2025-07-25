@@ -8,7 +8,7 @@ local formatter_config = {
   black = {
     pattern = { "*.py" },
     desc = "Auto format Python files after saving",
-    cmd = "black",
+    cmd = "black --line-length=100",
   },
   prettier = {
     pattern = { "*.js", "*.ts", "*.json" },
