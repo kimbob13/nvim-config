@@ -96,18 +96,20 @@ vim.api.nvim_create_autocmd("FileType", {
     local ft = vim.bo[args.buf].filetype
     for _, space2_ft in pairs(space2_fts) do
       if ft == space2_ft then
-        set.tabstop = 2
-        set.softtabstop = 2
-        set.shiftwidth = 2
+        vim.bo[args.buf].tabstop = 2
+        vim.bo[args.buf].softtabstop = 2
+        vim.bo[args.buf].shiftwidth = 2
+        return
       end
     end
 
     for _, tab8_ft in pairs(tab8_fts) do
       if ft == tab8_ft then
-        set.expandtab = false
-        set.tabstop = 8
-        set.softtabstop = 8
-        set.shiftwidth = 8
+        vim.bo[args.buf].expandtab = false
+        vim.bo[args.buf].tabstop = 8
+        vim.bo[args.buf].softtabstop = 8
+        vim.bo[args.buf].shiftwidth = 8
+        return
       end
     end
   end
