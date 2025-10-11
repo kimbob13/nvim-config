@@ -26,7 +26,7 @@ local lsp_config = {
               "E203", -- whitespace before :
               "E221", -- multiple spaces before operator
             },
-            maxLineLength = 100
+            maxLineLength = 120
           }
         }
       }
