@@ -89,8 +89,8 @@ return {
       -- leap.nvim
       {
         mode = { "n" },
-        { "<leader>s", "<Plug>(leap-forward-to)", desc = "leap.nvim: forward search" },
-        { "<leader>S", "<Plug>(leap-backward-to)", desc = "leap.nvim: backward search" },
+        { "<leader>s", "<Plug>(leap)", desc = "leap.nvim: forward search" },
+        { "<leader>S", "<Plug>(leap-from-window)", desc = "leap.nvim: backward search" },
       },
 
       -- neo-tree
