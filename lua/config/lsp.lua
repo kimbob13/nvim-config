@@ -81,7 +81,7 @@ local lsp_config = {
 }
 
 -- Turn off LSP log
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("off")
 
 -- Enble LSP
 for server_name, server_opts in pairs(lsp_config) do
