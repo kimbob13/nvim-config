@@ -74,8 +74,8 @@ return {
       lualine_x = { trailing_whitespaces, mixed_indent },
       lualine_y = { 'encoding', 'fileformat', 'filetype' },
       lualine_z = {
-        "searchcount",
-        { line_numbers, separator = { left = "", right = "" }, right_padding = 2 },
+        "searchcount", "location", "progress",
+        -- { line_numbers, separator = { left = "", right = "" }, right_padding = 2 },
       },
     },
     winbar = {
