@@ -78,7 +78,7 @@ return {
       { "<F8>", "<cmd>Navbuddy<cr>", mode = { "n" }, noremap = true, desc = "Navbuddy" },
 
       -- LSP clangd reload
-      { "<F6>", "<cmd>LspRestart clangd<cr>", mode = { "n" }, noremap = true, desc = "clangd restart" },
+      { "<F6>", "<cmd>lsp restart clangd<cr>", mode = { "n" }, noremap = true, desc = "clangd restart" },
 
       {
         mode = { "n" },
