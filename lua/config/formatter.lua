@@ -3,7 +3,7 @@ local formatter_config = {
   clang_format = {
     pattern = { "*.c", "*.h", "*.cc", "*.cpp", "*.hpp" },
     desc = "Auto format C/C++ files after saving",
-    cmd = "clang-format -i",
+    cmd = "clang-format -i --style=file --fallback-style=none",
   },
   black = {
     pattern = { "*.py" },
