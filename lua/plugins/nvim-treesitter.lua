@@ -38,7 +38,7 @@ vim.keymap.set({ "n", "x", "o" }, "]]", function()
 end)
 -- You can also pass a list to group multiple queries.
 vim.keymap.set({ "n", "x", "o" }, "]o", function()
-  move.goto_next_start({"@loop.inner", "@loop.outer"}, "textobjects")
+  require("nvim-treesitter-textobjects.move").goto_next_start({"@loop.inner", "@loop.outer"}, "textobjects")
 end)
 -- You can also use captures from other query groups like `locals.scm` or `folds.scm`
 vim.keymap.set({ "n", "x", "o" }, "]s", function()
@@ -75,6 +75,58 @@ return {
     branch = "main",
     lazy = false,
     build = ":TSUpdate",
+    config = function()
+      local treesitter = require("nvim-treesitter")
+      local available = treesitter.get_available()
+      local installing = {}
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("vim-treesitter-start", { clear = true }),
+        desc = "Install missing parsers and enable Treesitter highlighting",
+        callback = function(args)
+          -- Filetypes and parser names can differ (e.g. sh -> bash, typescriptreact -> tsx).
+          local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+          if not lang or lang == "" then
+            return
+          end
+
+          -- Bundled parsers do not count as installed by nvim-treesitter.
+          if
+            not vim.list_contains(available, lang)
+            or vim.list_contains(treesitter.get_installed("parsers"), lang)
+          then
+            pcall(vim.treesitter.start, args.buf, lang)
+            return
+          end
+
+          if installing[lang] then
+            return
+          end
+
+          installing[lang] = true
+          -- Query-only remnants otherwise make the installer skip a missing parser.
+          local force = vim.list_contains(treesitter.get_installed("queries"), lang)
+          -- Keep editing while the parser downloads and compiles.
+          treesitter.install({ lang }, { force = force }):await(vim.schedule_wrap(function(err, success)
+            installing[lang] = nil
+            if err or success == false then
+              vim.notify("Treesitter parser installation failed for " .. lang .. "; see :TSLog", vim.log.levels.WARN)
+              return
+            end
+
+            -- Other buffers may have opened or changed filetype during installation.
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if
+                vim.api.nvim_buf_is_loaded(buf)
+                and vim.treesitter.language.get_lang(vim.bo[buf].filetype) == lang
+              then
+                pcall(vim.treesitter.start, buf, lang)
+              end
+            end
+          end))
+        end,
+      })
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
